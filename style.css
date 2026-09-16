@@ -1,0 +1,495 @@
+/* ============================================================
+   ONE DAY, NINETEEN CENTURIES — Galilee field guide
+   Structure borrowed from the subject's own artifacts:
+     · the sha'ar blatt (sefer title page) → the opening
+     · the daf (text block + marginal commentary) → every stop
+   Colour: laid paper, letterpress red, Tzfat painted blue.
+   ============================================================ */
+
+/* ---------- 1. TOKENS ---------- */
+:root {
+  /* Paper — cooler and greyer than book cream; this is laid stock, not parchment */
+  --paper:   #E9E4D6;
+  --paper-2: #DFD8C6;
+  --paper-3: #D3CAB3;
+  --edge:    #BCB19A;
+
+  /* Ink */
+  --ink:   #16140F;
+  --ink-2: #413C32;
+  --ink-3: #6B6455;
+  --ink-4: #938B79;
+
+  /* The second colour of Hebrew printing since Soncino */
+  --red:      #A3170F;
+  --red-soft: #C6362B;
+
+  /* The blue they actually paint the graves */
+  --blue: #2B5C8A;
+
+  /* Per-site accents, each the site's own element */
+  --amuka:    #7E6410;  /* dry gold — the valley in Elul */
+  --meron:    #A3170F;  /* fire */
+  --tzfat:    #2B5C8A;  /* painted blue */
+  --tiberias: #1B5F54;  /* the Kinneret */
+
+  --display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --read:    "Cardo", "Iowan Old Style", Georgia, serif;
+  --marg:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --hebrew:  "Frank Ruhl Libre", "Times New Roman", serif;
+
+  --pad:  clamp(20px, 5.6vw, 34px);
+  --rule: 1px solid var(--edge);
+  --hair: 1px solid color-mix(in srgb, var(--edge) 55%, transparent);
+
+  --navh: 60px;
+  --barh: 42px;
+  --ease: cubic-bezier(.2,.75,.3,1);
+
+  color-scheme: light;
+}
+
+/* Night — for the drive home, not the default */
+:root[data-night="on"] {
+  --paper:   #12131A;
+  --paper-2: #1A1C25;
+  --paper-3: #232631;
+  --edge:    #383C4A;
+  --ink:     #ECE6D8;
+  --ink-2:   #C3BDAE;
+  --ink-3:   #948D7E;
+  --ink-4:   #6B6557;
+  --red:      #E8554A;
+  --red-soft: #F07A70;
+  --blue:     #71A6D6;
+  --amuka:    #CFA53E;
+  --meron:    #E8554A;
+  --tzfat:    #71A6D6;
+  --tiberias: #4FAE9C;
+  color-scheme: dark;
+}
+
+/* ---------- 2. RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* laid-paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+  color: var(--ink-2);
+  font-family: var(--read);
+  font-size: 18.5px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--navh) + env(safe-area-inset-bottom));
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+[hidden] { display: none !important; }
+::selection { background: var(--red); color: var(--paper); }
+
+/* ---------- 3. TYPE ---------- */
+h1, h2, h3, h4 { font-family: var(--display); color: var(--ink); font-weight: 600; line-height: 1.06; margin: 0; }
+.hebrew, [lang="he"], .he { font-family: var(--hebrew); direction: rtl; unicode-bidi: isolate; }
+
+/* the apparatus voice — every label, number and source uses it */
+.eyebrow {
+  font-family: var(--marg); font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--ink-3); font-weight: 500;
+}
+.lede { font-size: 1.12rem; color: var(--ink-2); }
+.muted { color: var(--ink-3); }
+.mono { font-family: var(--marg); font-variant-numeric: tabular-nums; }
+
+/* ---------- 4. LAYOUT ---------- */
+.wrap { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 var(--pad); }
+.view { display: none; }
+.view.on { display: block; animation: viewIn .32s var(--ease) both; }
+@keyframes viewIn { from { opacity: 0; } to { opacity: 1; } }
+section { padding: 32px 0; }
+
+/* ---------- 5. RUNNING HEAD (sticky) ----------
+   Set like the running head of a printed sefer: rule under, small caps, folio right. */
+.nowbar {
+  position: sticky; top: 0; z-index: 60;
+  height: var(--barh);
+  display: flex; align-items: center; gap: 9px;
+  padding: 0 var(--pad);
+  background: color-mix(in srgb, var(--paper) 93%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--marg); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+}
+.nowbar .pulse {
+  width: 6px; height: 6px; border-radius: 50%; flex: 0 0 auto; background: var(--red);
+  animation: pulse 2.8s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+.nowbar .nb-main { color: var(--ink); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nowbar .nb-right { margin-left: auto; color: var(--ink-3); display: flex; align-items: center; gap: 11px; white-space: nowrap; }
+.sunbtn { font-size: 13px; line-height: 1; padding: 5px; border-radius: 4px; }
+.sunbtn:hover { background: var(--paper-2); }
+
+/* ---------- 6. THE SHA'AR BLATT (title page) ----------
+   A sefer opens with the title inside an arch, the place and year at the foot.
+   This is that page, set modern. */
+.hero { padding: 0 0 26px; }
+.shaar {
+  position: relative;
+  margin: 0 calc(var(--pad) * -1);
+  padding: 30px var(--pad) 34px;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+}
+.shaar::before {
+  /* the arch — two hairlines and a curved crown, drawn not decorated */
+  content: ""; position: absolute; left: var(--pad); right: var(--pad); top: 14px; bottom: 18px;
+  border: 1px solid var(--edge);
+  border-radius: 46% 46% 4px 4px / 16% 16% 4px 4px;
+  pointer-events: none;
+}
+.shaar > * { position: relative; }
+
+.shaar .he-title {
+  font-family: var(--hebrew); font-weight: 700;
+  font-size: clamp(2.1rem, 11vw, 3.4rem); line-height: 1.12; color: var(--red);
+  letter-spacing: .01em; margin: 10px 0 0;
+}
+.shaar .htitle {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 9.4vw, 3.05rem);
+  line-height: 1.02; letter-spacing: -.012em; color: var(--ink);
+  margin: 16px auto 0; max-width: 11ch;
+  font-variation-settings: "opsz" 96;
+}
+.shaar .htitle em { font-style: italic; color: var(--red); }
+.shaar .hsub {
+  margin: 16px auto 0; max-width: 34ch; font-size: 1rem; color: var(--ink-2); line-height: 1.55;
+}
+.shaar .foot {
+  margin-top: 22px; padding-top: 16px; border-top: var(--hair);
+  font-family: var(--marg); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.shaar .foot .heb { font-family: var(--hebrew); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); direction: rtl; }
+.shaar .ornament { font-size: 15px; color: var(--edge); letter-spacing: .5em; }
+
+/* the count strip, set as a colophon line */
+.counts { display: flex; border-bottom: var(--rule); }
+.counts div { flex: 1; padding: 15px 0 14px; text-align: center; border-right: var(--hair); }
+.counts div:last-child { border-right: 0; }
+.counts b {
+  display: block; font-family: var(--display); font-size: 1.75rem; color: var(--ink);
+  font-weight: 700; line-height: 1;
+  font-variation-settings: "opsz" 8;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.counts span {
+  font-family: var(--marg); font-size: 8.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-3); display: block; margin-top: 8px;
+}
+
+/* ---------- 7. LIVE CARD ---------- */
+.live {
+  margin-top: 24px; border: 1px solid var(--ink); background: var(--paper-2);
+  box-shadow: 4px 4px 0 0 var(--acc, var(--red));
+}
+.live-top { padding: 13px 16px 0; display: flex; align-items: center; gap: 8px; }
+.live-top .eyebrow { color: var(--acc, var(--red)); }
+.live-body { padding: 6px 16px 15px; }
+.live-name { font-family: var(--display); font-size: 1.8rem; color: var(--ink); line-height: 1.04; font-variation-settings: "opsz" 48; }
+.live-who { margin: 6px 0 0; color: var(--ink-2); font-size: .97rem; line-height: 1.5; }
+.live-meter { height: 4px; background: var(--paper-3); position: relative; overflow: hidden; border-top: 1px solid var(--edge); }
+.live-meter i { position: absolute; inset: 0 auto 0 0; background: var(--acc, var(--red)); transition: width 1s linear; }
+.live-foot {
+  display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-top: 1px solid var(--ink);
+  font-family: var(--marg); font-size: 10.5px; color: var(--ink-3); letter-spacing: .04em;
+}
+.live-foot b { color: var(--ink); font-weight: 500; }
+
+/* ---------- 8. THE TIME SPINE ---------- */
+.spine { position: relative; padding: 4px 0 4px 56px; }
+.spine::before { content: ""; position: absolute; left: 20px; top: 4px; bottom: 4px; width: 1px; background: var(--edge); }
+.era { position: relative; padding: 0 0 24px; }
+.era::before {
+  content: ""; position: absolute; left: -40px; top: 9px;
+  width: 7px; height: 7px; background: var(--paper); border: 1px solid var(--ink-4); border-radius: 50%;
+}
+.era.stop::before {
+  background: var(--acc, var(--red)); border-color: var(--acc, var(--red));
+  width: 11px; height: 11px; left: -42px; top: 7px; border-radius: 0; transform: rotate(45deg);
+}
+.era .yr {
+  position: absolute; left: -56px; top: 26px; width: 50px; text-align: right;
+  font-family: var(--marg); font-size: 8.5px; letter-spacing: .04em; color: var(--ink-4);
+}
+.era h4 { font-size: 1rem; line-height: 1.24; font-variation-settings: "opsz" 18; }
+.era.stop h4 { font-size: 1.28rem; }
+.era p { margin: 4px 0 0; font-size: .92rem; color: var(--ink-3); line-height: 1.5; }
+.era.stop p { color: var(--ink-2); }
+.era .tag {
+  display: inline-block; margin-top: 7px; font-family: var(--marg); font-size: 9px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--acc, var(--red));
+  border: 1px solid currentColor; padding: 2px 7px;
+}
+
+/* ---------- 9. STOP CARDS — set as a sefer's table of contents ---------- */
+.stops { display: block; }
+.stopcard {
+  display: block; text-decoration: none; position: relative;
+  padding: 17px 0 17px 44px; border-top: var(--hair);
+  transition: background .18s var(--ease);
+}
+.stops .stopcard:last-of-type { border-bottom: var(--hair); }
+.stopcard:hover { background: color-mix(in srgb, var(--acc, var(--red)) 7%, transparent); }
+.stopcard::before {
+  /* the siman letter, in the margin, as a sefer numbers its chapters */
+  content: attr(data-ot);
+  position: absolute; left: 0; top: 17px;
+  font-family: var(--hebrew); font-size: 1.35rem; font-weight: 700;
+  color: var(--acc, var(--red)); width: 32px; text-align: center; line-height: 1;
+}
+.stopcard.now { background: color-mix(in srgb, var(--acc) 13%, transparent); }
+.stopcard.now::after {
+  content: ""; position: absolute; left: -12px; top: 0; bottom: 0; width: 3px; background: var(--acc);
+}
+.stopcard.done { opacity: .45; }
+.sc-head { display: flex; align-items: baseline; gap: 10px; }
+.sc-time { font-family: var(--marg); font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+.sc-cent { margin-left: auto; font-family: var(--marg); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-4); }
+.sc-name { font-family: var(--display); font-size: 1.42rem; color: var(--ink); margin: 3px 0 0; line-height: 1.08; font-variation-settings: "opsz" 36; }
+.sc-he { font-family: var(--hebrew); font-size: .98rem; color: var(--acc, var(--red)); margin-top: 1px; direction: rtl; text-align: left; }
+.sc-who { margin: 6px 0 0; font-size: .93rem; color: var(--ink-3); line-height: 1.48; }
+.sc-go { display: none; }
+
+.drive {
+  display: flex; align-items: center; gap: 8px; padding: 7px 0 7px 44px;
+  font-family: var(--marg); font-size: 9.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-4);
+}
+.drive::before { content: "↓"; font-size: 11px; }
+
+/* ---------- 10. THE DAF — stop detail ----------
+   Text block in the centre; commentary in the margin. */
+.stophero { padding: 26px 0 20px; border-bottom: 2px solid var(--ink); }
+.stophero h1 {
+  font-size: clamp(2.05rem, 10vw, 3rem); line-height: 1; letter-spacing: -.015em;
+  font-variation-settings: "opsz" 96;
+}
+.stophero .he {
+  font-family: var(--hebrew); font-size: 1.55rem; font-weight: 700; color: var(--acc);
+  margin-top: 7px; direction: rtl; text-align: left;
+}
+.stophero .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+.chip {
+  font-family: var(--marg); font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 4px 8px; border: 1px solid var(--edge); color: var(--ink-3);
+}
+.chip.acc { color: var(--acc); border-color: var(--acc); }
+
+/* the sixty-second brief — set like the opening words of a chapter */
+.brief { padding: 20px 0 22px; border-bottom: var(--hair); }
+.brief .eyebrow { color: var(--acc); display: block; margin-bottom: 10px; }
+.brief p { margin: 0; font-size: 1.16rem; color: var(--ink); line-height: 1.52; }
+.brief p + p { margin-top: 12px; }
+.brief p:first-of-type::first-letter {
+  font-family: var(--display); font-size: 3.1em; line-height: .82; float: left;
+  margin: 3px 9px 0 0; color: var(--acc); font-weight: 600;
+}
+
+/* running text */
+.prose { padding-top: 6px; }
+.prose h2 {
+  font-size: 1.5rem; margin: 34px 0 12px; font-variation-settings: "opsz" 40;
+  padding-top: 14px; border-top: var(--hair);
+}
+.prose h3 { font-size: 1.12rem; margin: 24px 0 7px; font-variation-settings: "opsz" 20; }
+.prose p { margin: 0 0 14px; }
+.prose ul { margin: 0 0 14px; padding-left: 18px; }
+.prose li { margin-bottom: 7px; }
+.prose strong { color: var(--ink); font-weight: 700; }
+.prose em { color: var(--ink); }
+
+/* a quoted primary text — set as a sefer sets a maamar: indented, ruled, Hebrew first */
+.source-quote { margin: 20px 0; padding: 0 0 0 16px; border-left: 3px double var(--acc, var(--red)); }
+.source-quote .he {
+  font-family: var(--hebrew); font-size: 1.22rem; line-height: 1.95; color: var(--ink);
+  direction: rtl; text-align: right; margin-bottom: 9px; font-weight: 500;
+}
+.source-quote .en { font-size: 1rem; color: var(--ink-2); line-height: 1.55; font-style: italic; }
+.source-quote cite {
+  display: block; margin-top: 9px; font-family: var(--marg); font-size: 9.5px;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--acc, var(--red)); font-style: normal;
+}
+
+/* MARGINALIA — the signature. The astonishing fact lives in the margin,
+   marked with a Hebrew letter, exactly the way a sefer marks a comment. */
+.wow {
+  position: relative; margin: 22px 0; padding: 14px 0 14px 34px;
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  background: color-mix(in srgb, var(--blue) 6%, transparent);
+}
+.wow::before {
+  content: "׳"; position: absolute; left: 9px; top: 13px;
+  font-family: var(--hebrew); font-size: 1.15rem; font-weight: 700; color: var(--blue);
+}
+.wow .eyebrow { color: var(--blue); display: block; margin-bottom: 7px; }
+.wow p { margin: 0; color: var(--ink); font-size: .97rem; line-height: 1.55; }
+.wow p + p { margin-top: 9px; }
+
+/* honesty marker — tradition vs documented history, shown not hidden */
+.tradition {
+  margin: 18px 0; padding: 12px 0 12px 34px; position: relative;
+  border-top: var(--hair); border-bottom: var(--hair);
+  font-size: .94rem; color: var(--ink-2);
+}
+.tradition::before {
+  content: "≈"; position: absolute; left: 11px; top: 12px;
+  font-family: var(--marg); font-size: 1rem; color: var(--ink-4);
+}
+.tradition .eyebrow { color: var(--ink-4); display: block; margin-bottom: 5px; }
+
+details.more { border-top: var(--hair); }
+.prose + details.more { border-top: 1px solid var(--ink); }
+details.more:last-of-type { border-bottom: 1px solid var(--ink); }
+details.more summary {
+  list-style: none; cursor: pointer; padding: 14px 0; display: flex; align-items: center; gap: 10px;
+  font-family: var(--marg); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+}
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::after { content: "+"; margin-left: auto; font-size: 15px; color: var(--acc, var(--red)); }
+details.more[open] summary::after { content: "−"; }
+details.more[open] summary { color: var(--acc, var(--red)); }
+details.more .inner { padding: 0 0 16px; }
+
+/* actions — set as index entries, not buttons */
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 22px 0; border: 1px solid var(--ink); }
+.act {
+  display: flex; flex-direction: column; gap: 2px; text-decoration: none;
+  padding: 12px 14px; border-right: var(--hair); border-bottom: var(--hair);
+  transition: background .18s var(--ease);
+}
+.act:hover { background: color-mix(in srgb, var(--acc, var(--red)) 9%, transparent); }
+.act span { font-family: var(--marg); font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.act b { font-family: var(--display); font-size: 1.02rem; color: var(--ink); font-weight: 600; font-variation-settings: "opsz" 16; }
+.actions .act:nth-child(2n) { border-right: 0; }
+.actions .act:nth-last-child(-n+2) { border-bottom: 0; }
+
+/* ---------- 11. TEFILLOS ---------- */
+.tefilla { margin: 22px 0; border: 1px solid var(--ink); }
+.tefilla-h { padding: 13px 16px; border-bottom: 1px solid var(--ink); background: var(--paper-2); }
+.tefilla-h h3 { font-size: 1.14rem; font-variation-settings: "opsz" 20; }
+.tefilla-h p { margin: 4px 0 0; font-size: .88rem; color: var(--ink-3); line-height: 1.45; }
+.tefilla-b { padding: 17px 16px; }
+.tefilla-b .he {
+  font-family: var(--hebrew); font-size: 1.36rem; line-height: 2.05; color: var(--ink);
+  direction: rtl; text-align: right; font-weight: 500;
+}
+.tefilla-b .tl { margin-top: 12px; font-family: var(--marg); font-size: .82rem; color: var(--ink-3); letter-spacing: .02em; }
+.tefilla-b .en { margin-top: 11px; font-size: .97rem; color: var(--ink-2); }
+
+/* ---------- 12. FIELD ---------- */
+.fieldgrid { display: block; }
+.fieldcard { padding: 17px 0; border-top: var(--hair); }
+.fieldgrid .fieldcard:last-child { border-bottom: var(--hair); }
+.fieldcard h3 { font-size: 1.1rem; margin-bottom: 6px; font-variation-settings: "opsz" 18; }
+.fieldcard p { margin: 0; font-size: .95rem; color: var(--ink-2); }
+.fieldcard p + p { margin-top: 8px; }
+.fieldcard ul { margin: 7px 0 0; padding-left: 18px; font-size: .95rem; }
+.fieldcard li { margin-bottom: 6px; }
+
+.alert { padding: 15px 16px; margin: 18px 0; border: 2px solid var(--red); background: color-mix(in srgb, var(--red) 7%, transparent); }
+.alert .eyebrow { color: var(--red); display: block; margin-bottom: 6px; }
+.alert p { margin: 0; color: var(--ink); font-size: .97rem; line-height: 1.5; }
+.alert p + p { margin-top: 8px; }
+
+.zman { width: 100%; border-collapse: collapse; font-family: var(--marg); font-size: 12px; }
+.zman td { padding: 9px 0; border-bottom: var(--hair); }
+.zman td:first-child { color: var(--ink-3); letter-spacing: .03em; }
+.zman td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+.zman tr.hl td, .zman tr.hl td:last-child { color: var(--red); font-weight: 500; }
+
+/* ---------- 13. SAGES ---------- */
+.sagegrid { display: block; }
+.sage { display: block; text-decoration: none; padding: 15px 0; border-top: var(--hair); transition: background .18s var(--ease); }
+.sagegrid .sage:last-child { border-bottom: var(--hair); }
+.sage:hover { background: color-mix(in srgb, var(--acc, var(--red)) 7%, transparent); }
+.sage .row { display: flex; align-items: baseline; gap: 10px; }
+.sage b { font-family: var(--display); font-size: 1.14rem; color: var(--ink); font-weight: 600; font-variation-settings: "opsz" 20; }
+.sage .yrs { margin-left: auto; font-family: var(--marg); font-size: 9.5px; color: var(--ink-4); white-space: nowrap; }
+.sage .he { font-family: var(--hebrew); font-size: .96rem; color: var(--acc, var(--red)); direction: rtl; text-align: left; margin-top: 1px; }
+.sage p { margin: 6px 0 0; font-size: .91rem; color: var(--ink-3); line-height: 1.48; }
+
+/* ---------- 14. SOURCES ---------- */
+.srclist { display: block; }
+.srclist a { display: block; text-decoration: none; padding: 12px 0; border-top: var(--hair); }
+.srclist a:last-child { border-bottom: var(--hair); }
+.srclist a:hover { background: color-mix(in srgb, var(--blue) 8%, transparent); }
+.srclist b { display: block; color: var(--ink); font-family: var(--read); font-weight: 700; font-size: .97rem; }
+.srclist span { font-family: var(--marg); font-size: 9px; color: var(--ink-4); word-break: break-all; }
+
+/* ---------- 15. NAV ---------- */
+.nav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  height: calc(var(--navh) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--paper);
+  border-top: 2px solid var(--ink);
+}
+.nav a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  text-decoration: none; color: var(--ink-3); position: relative;
+  font-family: var(--marg); font-size: 8px; letter-spacing: .12em; text-transform: uppercase;
+  transition: color .18s var(--ease);
+  border-right: var(--hair);
+}
+.nav a:last-child { border-right: 0; }
+.nav a svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.nav a.on { color: var(--red); }
+.nav a.on::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); }
+
+/* ---------- 16. MISC ---------- */
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--marg); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-3); text-decoration: none;
+}
+.back:hover { color: var(--red); }
+.foot { padding: 34px 0 26px; border-top: 2px solid var(--ink); margin-top: 30px; }
+.foot p { font-size: .84rem; color: var(--ink-3); margin: 0 0 8px; line-height: 1.5; }
+
+/* ---------- 17. THE DAF PROPER, ON WIDE SCREENS ----------
+   The marginal comment leaves the text block and stands in the real margin,
+   the way Tosafos stands outside the daf. */
+@media (min-width: 1060px) {
+  .wrap { max-width: 1010px; }
+  #v-stop .prose, #v-stop .brief, #v-stop .stophero,
+  #v-stop .actions, #v-stop details.more, #v-stop .fieldcard { max-width: 640px; }
+  #v-stop .prose { position: relative; }
+  #v-stop .prose .wow {
+    float: right; width: 268px; clear: right;
+    margin: 6px -330px 24px 40px;
+    border-top: 0; border-bottom: 0; border-left: 1px solid var(--ink);
+    padding: 2px 0 10px 18px; background: none;
+  }
+  #v-stop .prose .wow::before { left: -9px; top: 0; background: var(--paper); padding: 1px 2px; }
+  #v-stop .prose .wow p { font-size: .9rem; line-height: 1.5; }
+  .nav { grid-template-columns: repeat(5, 116px); justify-content: center; }
+}
+@media (min-width: 760px) {
+  body { font-size: 19px; }
+  .actions { grid-template-columns: repeat(4, 1fr); }
+  .actions .act:nth-child(2n) { border-right: var(--hair); }
+  .actions .act:nth-child(4n), .actions .act:last-child { border-right: 0; }
+  .actions .act:nth-last-child(-n+4) { border-bottom: 0; }
+}
