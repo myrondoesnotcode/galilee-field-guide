@@ -189,54 +189,135 @@ stops: [
   chips: ["1,204 m", "Open 24 hours", "Har Meron"],
   waze: waze("ציון רשבי מירון"), gmaps: gmaps("ציון רשבי מירון"),
   brief: [
-    "This is the highest ground you will stand on all day — <strong>1,204 metres</strong>, the tallest peak in Israel inside the Green Line — and after the Kosel it is the most visited Jewish grave in the country.",
-    "Below you lie <strong>Rabbi Shimon bar Yochai</strong> and his son <strong>Rabbi Elazar</strong>, who according to the Talmud spent thirteen years hiding in a cave from a Roman death sentence, buried to their necks in sand, eating from one carob tree.",
-    "What came out of that cave is the reason half the Jewish world lights a fire on Lag BaOmer."
+    "The highest ground you will stand on today — <strong>1,204 metres</strong>, the tallest peak in Israel inside the Green Line — and after the Kosel the most visited Jewish grave in the country.",
+    "Below you, by a tradition first recorded around <strong>1187</strong>, lie <strong>Rabbi Shimon bar Yochai</strong> and his son <strong>Rabbi Elazar</strong>, who hid from a Roman death sentence in a cave, buried to their necks in sand, living off one carob tree.",
+    "Almost every popular fact about this mountain turns out to have a more interesting true version underneath it. This page gives you both."
   ],
   sections: [
-    { h: "Thirteen years in a cave", b: [
-      { t: "p", x: "The story is in <em>Shabbos 33b</em>, and it begins with a conversation about the Romans that should have stayed private. Rabbi Yehuda praised Roman building — markets, bridges, bathhouses. Rabbi Yose was silent. Rabbi Shimon said they built all of it only for their own needs. The remark was reported, and Rome sentenced him to death." },
-      { t: "p", x: "He and his son hid. The Gemara says a carob tree and a spring were created for them; they removed their clothes to preserve them, sat in sand up to their necks, and learned. <strong>Twelve years.</strong> Then Eliyahu HaNavi came to the mouth of the cave and announced that the emperor had died and the decree was void." },
-      { t: "p", x: "They came out — and what they saw destroyed them. Men ploughing and sowing. Rabbi Shimon said: <em>they abandon eternal life and occupy themselves with temporal life.</em> Everywhere they looked was burned. A heavenly voice went out: <strong>“Have you come out to destroy My world? Return to your cave.”</strong>" },
-      { t: "wow", label: "The second year was the repair", x: [
-        "They went back for <strong>twelve more months</strong> — the Gemara's stated reason being that twelve months is the sentence of the wicked in Gehinnom.",
-        "When they emerged the second time, it was erev Shabbos, and they saw an old man running with two bundles of myrtle. What are those for? <em>In honour of Shabbos.</em> Why two? <strong>One for <span class='hebrew'>זָכוֹר</span> and one for <span class='hebrew'>שָׁמוֹר</span>.</strong>",
-        "Rabbi Shimon turned to his son and said: <em>see how beloved the mitzvos are to Israel</em> — and their minds were settled. Thirteen years of cave could not fix what one old man running home with myrtle fixed in a sentence."
-      ] },
+    { h: "It started as a conversation about roads", b: [
+      { t: "p", x: "The cave story is not introduced as a story about a cave. It arrives as an explanation of why Rabbi Yehuda was called <span class='hebrew'>רֹאשׁ הַמְדַבְּרִים בְּכָל מָקוֹם</span> — head of the speakers everywhere." },
+      { t: "p", x: "Rabbi Yehuda opened: <span class='hebrew'>כַּמָּה נָאִים מַעֲשֵׂיהֶן שֶׁל אוּמָּה זוֹ</span> — how pleasant are this nation's works. They established markets, bridges, bathhouses. <strong>Rabbi Yose was silent.</strong> Rabbi Shimon answered that they built every one of them for themselves: markets to house harlots, bathhouses to pamper themselves, bridges <span class='hebrew'>לִיטּוֹל מֵהֶן מֶכֶס</span> — to collect the toll." },
+      { t: "p", x: "Yehuda ben Gerim was sitting with them. He repeated it at home, and it travelled. The sentence came back in rhyme:" },
       { t: "quote",
-        he: "חֲזוֹ כַּמָּה חֲבִיבִין מִצְוֺת עַל יִשְׂרָאֵל, אִיְּתִיב דַּעְתַּיְיהוּ",
-        en: "“See how beloved the mitzvos are to Israel” — and their minds were settled.",
-        cite: "Shabbos 33b", url: "https://www.sefaria.org/Shabbat.33b" }
-    ]},
-    { h: "The Zohar", b: [
-      { t: "p", x: "Rabbi Shimon is traditionally held to be the author of the <strong>Zohar</strong>, the foundational work of Kabbalah, and the whole mystical tradition you will meet this afternoon in Tzfat runs back through this grave." },
-      { t: "tradition", label: "Tradition and scholarship differ here, and it is worth saying so", x: "Jewish tradition attributes the Zohar to Rashbi and his circle. Academic scholarship since the nineteenth century has argued it was composed in thirteenth-century Spain, associated with Moshe de León. This guide reports the tradition as the tradition, and does not pretend the scholarly question is not there." },
-      { t: "p", x: "Whatever you hold, the Ari and the Ramak — whose graves you will stand at in a few hours — built their life's work on this text and on this man." }
-    ]},
-    { h: "The mountain, and Yehoshua", b: [
-      { t: "p", x: "<strong>Har Meron</strong> is the highest point in Israel within the Green Line at 1,204 metres, and sits in a nature reserve of some 84,000 dunams — the largest in the north." },
-      { t: "tradition", label: "“The Waters of Merom” — say “some identify”, not “this is”", x: "Yehoshua 11 describes the decisive northern battle at <span class='hebrew'>מֵי מֵרוֹם</span>, where Yehoshua fell suddenly on the coalition of Yavin king of Chatzor. Some scholars identify Mei Merom with this Meron. Others place it at Lake Hula, and Zvi Gal proposed the Horns of Hattin. The identification is genuinely open." },
-      { t: "p", x: "What is not in doubt is that Chatzor — <span class='hebrew'>רֹאשׁ כׇּל־הַמַּמְלָכוֹת הָאֵלֶּה</span>, “the head of all those kingdoms” — lies just north of this route, and was excavated by Yigael Yadin across four seasons from 1955." }
-    ]},
-    { h: "Who else is on this mountain", b: [
-      { t: "p", x: "Besides Rashbi and Rabbi Elazar, the mountain holds the rock-cut tomb attributed to <strong>Hillel and his disciples</strong> — the same Hillel whose greatest student you stood over an hour ago — and, across the valley, the tomb attributed to <strong>Shammai</strong>." },
-      { t: "wow", label: "You are meeting the same argument twice today", x: [
-        "At Amuka you stood at the grave of Hillel's greatest student, in a story where <strong>Shammai comes at him with a staff</strong> over an inheritance.",
-        "Here on this mountain, Hillel and Shammai are buried on opposite sides of a valley. The two schools that argued for a generation are still facing each other across the Galilee."
+        he: "יְהוּדָה שֶׁעִילָּה — יִתְעַלֶּה. יוֹסֵי שֶׁשָּׁתַק — יִגְלֶה לְצִיפּוֹרִי. שִׁמְעוֹן שֶׁגִּינָּה — יֵהָרֵג",
+        en: "Yehuda, who elevated — shall be elevated. Yose, who stayed silent — shall be exiled to Tzippori. Shimon, who condemned — shall be killed.",
+        cite: "Shabbos 33b", url: "https://www.sefaria.org/Shabbat.33b" },
+      { t: "wow", label: "Silence was not neutral", x: [
+        "Read the middle line again. Rabbi Yose neither praised nor criticised. He said nothing at all — and he is exiled for it.",
+        "Three men in one conversation: one flattered, one kept quiet, one spoke. All three were sentenced. There is no safe position in that room."
       ] }
+    ]},
+    { h: "Twelve years, and then twelve months", b: [
+      { t: "p", x: "They did not run to a cave first. They hid in the beis midrash, and Rabbi Shimon's wife brought them bread and a jug of water each day. Only when the decree hardened did they move — on the reasoning that if she were questioned under pressure she might give them away." },
+      { t: "p", x: "In the cave <span class='hebrew'>אִיתְרְחִישׁ נִיסָּא</span> — a carob tree and a spring were <em>created</em> for them." },
+      { t: "wow", label: "Why they sat in the sand", x: [
+        "Everyone tells this as extreme asceticism. The Gemara gives a domestic reason.",
+        "They took off their clothes and sat covered to the neck in sand, learning all day, dressing again only to daven — <span class='hebrew'>כִּי הֵיכִי דְּלָא לִיבְלוּ</span>, <strong>so that their clothes should not wear out.</strong>",
+        "They had one set of garments and thirteen years. The sand is laundry management."
+      ] },
+      { t: "p", x: "Twelve years in. Eliyahu HaNavi stood at the mouth of the cave and said, to nobody in particular: <em>who will inform bar Yochai that Caesar has died and his decree is annulled?</em>" },
+      { t: "p", x: "They came out, saw men ploughing and sowing, and said <span class='hebrew'>מַנִּיחִין חַיֵּי עוֹלָם וְעוֹסְקִין בְּחַיֵּי שָׁעָה</span> — they abandon eternal life and busy themselves with temporal life. Everywhere they set their eyes burned. A heavenly voice: <span class='hebrew'>לְהַחֲרִיב עוֹלָמִי יְצָאתֶם?! חִיזְרוּ לִמְעָרַתְכֶם</span> — <strong>did you come out to destroy My world? Go back to your cave.</strong>" },
+      { t: "p", x: "Twelve months more — and the reason is theirs, not Heaven's: <em>the judgment of the wicked in Gehinnom is twelve months.</em> They sentenced themselves." },
+      { t: "p", x: "When they emerged the second time the damage was asymmetric: <span class='hebrew'>כָּל הֵיכָא דַּהֲוָה מָחֵי רַבִּי אֶלְעָזָר, הֲוָה מַסֵּי רַבִּי שִׁמְעוֹן</span> — wherever Rabbi Elazar wounded, Rabbi Shimon healed. The father says: <em>my son, you and I are enough for the world.</em>" },
+      { t: "p", x: "Then, at dusk on erev Shabbos, an old man ran past carrying <strong>two bundles of myrtle</strong>. What are they for? <em>In honour of Shabbos.</em> Why two? <span class='hebrew'>חַד כְּנֶגֶד זָכוֹר וְחַד כְּנֶגֶד שָׁמוֹר</span>." },
+      { t: "quote",
+        he: "חֲזִי כַּמָּה חֲבִיבִין מִצְוֹת עַל יִשְׂרָאֵל, אִיְּתִיבָה דַּעְתַּיְיהוּ",
+        en: "“See how beloved the mitzvos are to Israel” — and their minds were settled.",
+        cite: "Shabbos 33b", url: "https://www.sefaria.org/Shabbat.33b" },
+      { t: "p", x: "Thirteen years underground could not repair what one old man running home with myrtle repaired in a sentence." },
+      { t: "wow", label: "What the sand did to him", x: [
+        "His son-in-law Rabbi Pinchas ben Yair took him to the bathhouse afterwards and saw that his skin was covered in <span class='hebrew'>פִּילֵי</span> — cracks and fissures — from the years in the sand. He wept over him.",
+        "Rabbi Shimon's reply: <em>fortunate are you that you have seen me like this, for had you not seen me like this, you would not have found this in me.</em>",
+        "And the Gemara measures the gain. Before the cave, Rabbi Pinchas would answer each of Rabbi Shimon's questions with twelve resolutions. Afterwards, Rabbi Shimon answered each of Rabbi Pinchas's with twenty-four."
+      ] }
+    ]},
+    { h: "There is a second version, and it is a different story", b: [
+      { t: "p", x: "Everything above is the Babylonian Talmud. The Eretz Yisrael sources — <em>Bereishis Rabbah</em> and the <em>Yerushalmi</em> — tell it again, and almost nothing matches." },
+      { t: "wow", label: "Thirteen straight years, and no Eliyahu", x: [
+        "In the Eretz Yisrael version it is <strong>thirteen years in one stretch</strong> — not twelve plus twelve months. There is no spring. There is no sand. There is no Eliyahu at the cave mouth. And there is no burning of the farmers.",
+        "They eat <span class='hebrew'>חֲרוּבִין שֶׁל גָּרוֹדָא</span>, dry withered carobs, <span class='hebrew'>עַד שֶׁהֶעֱלָה גּוּפָן חֲלוּדָה</span> — until their bodies broke out in rust.",
+        "And what tells them it is safe to leave is not a prophet. It is a <strong>bird-catcher</strong>. Rabbi Shimon watched a fowler work, and heard a heavenly voice call <span class='hebrew'>דִּימוֹס</span> — <em>dimissus</em>, acquitted — and the bird escaped; then <span class='hebrew'>סְפֶקוּלָא</span> — <em>arrows</em> — and it was taken.",
+        "He concluded: <em>a bird is not trapped without Heaven. How much more so a human soul.</em> And he came out."
+      ] },
+      { t: "tradition", label: "Do not blend them", x: "Both versions are authentic. They are not two halves of one account, and the numbers do not reconcile — the Bavli's twelve-plus-one is not the midrash's thirteen. Sefaria's edition of the Yerushalmi goes further and calls the Bavli's text “clearly derivative,” though that is one editor's judgment, not consensus. The cave's location is named in neither: <strong>Peki'in</strong> first appears in print in 1765." }
+    ]},
+    { h: "The man himself", b: [
+      { t: "p", x: "He learned under Rabbi Akiva — <em>Vayikra Rabbah</em> has him and Rabbi Chanina ben Chachinai going to Bnei Brak and staying <strong>thirteen years</strong>. The point of that story is not the learning: it is that Rabbi Shimon kept writing home and Rabbi Chanina did not." },
+      { t: "p", x: "When Rabbi Akiva was imprisoned, Rabbi Shimon asked him to teach and threatened, in jest, to tell his father Yochai to hand him to the authorities. Akiva's answer became a proverb: <span class='hebrew'>יוֹתֵר מִמַּה שֶּׁהָעֵגֶל רוֹצֶה לִינַק — פָּרָה רוֹצֶה לְהָנִיק</span>, <em>more than the calf wants to nurse, the cow wants to feed.</em>" },
+      { t: "quote",
+        he: "יָכוֹל אֲנִי לִפְטוֹר אֶת כׇּל הָעוֹלָם כּוּלּוֹ מִן הַדִּין",
+        en: "“I am able to exempt the entire world from judgment.”",
+        cite: "Sukkah 45b", url: "https://www.sefaria.org/Sukkah.45b" },
+      { t: "wow", label: "The line is longer than the quote", x: [
+        "It rarely gets finished. He continues that if his son were with him they could exempt the world from the day of creation until now — and that if <strong>Yosam ben Uziyahu</strong> were with them, from the creation of the world until its very end.",
+        "On the same daf: <em>I have seen the men of high standing, and they are few. If they are a thousand, my son and I are among them. If they are two — they are my son and I.</em>"
+      ] },
+      { t: "p", x: "Not everyone was enchanted. Isi ben Yehuda's thumbnail sketches of the Tannaim reach him and say <span class='hebrew'>רַבִּי שִׁמְעוֹן — טוֹחֵן הַרְבֵּה וּמוֹצִיא קִימְעָא</span>: <em>grinds a great deal and brings out little.</em> And the halachic maxim about him is careful — <span class='hebrew'>כְּדַאי הוּא רַבִּי שִׁמְעוֹן לִסְמוֹךְ עָלָיו בִּשְׁעַת הַדְּחָק</span>, worthy to rely on <em>under pressure</em>." }
+    ]},
+    { h: "The Zohar — and the date that isn't in it", b: [
+      { t: "p", x: "The <em>Idra Rabba</em> opens with Rabbi Shimon asking his companions <span class='hebrew'>עַד אֵימַת נֵיתִיב בְּקַיְּימָא דְּחַד סַמְכָא</span> — how long shall we sit on a foundation of a single pillar? Ten went in. The text names the three who died during it, their souls leaving <span class='hebrew'>בִּנְשִׁיקָה</span>, and records the tally plainly: <strong>ten entered, seven came out.</strong>" },
+      { t: "p", x: "The <em>Idra Zuta</em> is his last day. He assigns the roles himself — <span class='hebrew'>רִבִּי אַבָּא יִכְתּוֹב, וְרִבִּי אֶלְעָזָר בְּרִי יִלְעֵי</span>, Rabbi Abba will write and my son Rabbi Elazar will study — and <span class='hebrew'>כָּל הַהוּא יוֹמָא לָא אַפְסִיק אֶשָּׁא מִן בֵּיתָא</span>, all that day the fire did not cease from the house, and none could come near him. He died mid-sentence, on the word <span class='hebrew'>חיים</span>." },
+      { t: "wow", label: "There is no date anywhere in either Idra", x: [
+        "The Zohar, read end to end, <strong>never says Lag BaOmer</strong>. It never says 18 Iyar. It never names a month. On his last day it says only <span class='hebrew'>בְּהַהוּא יוֹמָא</span> — <em>on that day.</em>",
+        "It also never says “the day of my joy.” It says <span class='hebrew'>הִלּוּלָא דִּילִי</span>. The familiar <span class='hebrew'>בְּיוֹם שִׂמְחָתִי</span> comes from <em>Pri Etz Chaim</em> — the Ari's school, thirteen centuries later."
+      ] },
+      { t: "wow", label: "The yahrzeit may rest on one letter", x: [
+        "The Chida held that the printed text was corrupted: <span class='hebrew'>שִׂמְחַת</span> רשב״י — <em>the joy of</em> Rashbi — misread as <span class='hebrew'>שֶׁמֵּת</span> רשב״י, <em>that Rashbi died.</em>",
+        "The editions bear him out. <em>Sha'ar HaKavanos</em> 1752 and the first <em>Pri Etz Chaim</em> of 1782 read <em>simchas</em>. Koretz 1785 and Dubrowno 1802 read <em>she-meis</em>. The 1819 edition reverts to <em>simchas</em>. Benayahu and Rav Yaakov Hillel confirmed <em>simchas</em> from manuscript, Hillel from Chaim Vital's own hand.",
+        "And the printed death-clause contradicts its own chapter: it explains the date by Rashbi being one of Rabbi Akiva's students who died in the Omer — while four paragraphs earlier, the same book lists him among the five who <strong>survived</strong>."
+      ] },
+      { t: "tradition", label: "Authorship", x: "Jewish tradition attributes the Zohar to Rashbi and his circle; the Chida defends it by invoking the Ramak and the Ari. Rabbi Yaakov Emden's position is subtler than either camp claims — he wrote that the book and its author are holy <em>whoever he was</em>, while arguing the compilation is far later than Rashbi. Academic scholarship runs from Scholem (Moshe de León, c. 1280s) through Liebes (a circle, not an author) to Abrams (there is no unified text to assign)." }
+    ]},
+    { h: "The pilgrimage was not originally his", b: [
+      { t: "p", x: "This is the part almost nobody on the mountain knows, and it is the strongest thing on this page." },
+      { t: "wow", label: "Hillel and Shammai, on Pesach Sheni, for rain", x: [
+        "The original Meron pilgrimage was not to Rabbi Shimon, and it was not on Lag BaOmer. It was to the burial cave attributed to <strong>Hillel and Shammai</strong>, on <strong>Pesach Sheni</strong>, the 14th of Iyar — and it was about <em>water</em>.",
+        "<strong>Benjamin of Tudela</strong>, who came through around 1170, describes that cave and the twenty graves of disciples beside it. He does not mention Rabbi Shimon bar Yochai anywhere in his entire itinerary.",
+        "A 13th-century account describes the crowd watching for water to run out of the cave — a sign the year would be blessed — and records that <strong>Muslims came too</strong>. The Muslim governor of Tzfat confirms it independently in the 14th century: <em>on a certain day of the year, in mid-Iyar, many Jews gather there.</em>",
+        "In 1501 a visitor found Rabbi Shimon's cave sealed shut, drank from Hillel's spring, and wrote honestly that he had looked for the miracle and <em>“I did not see this wonder.”</em>"
+      ] },
+      { t: "tradition", label: "So who is actually buried here", x: "The earliest source placing Rabbi Shimon at Meron is Rabbi Yaakov ben Nesanel HaKohen, before 1187 — roughly a thousand years after his lifetime. Three other sources name three other places: the Bavli in <em>Bava Metzia</em> points to Biri, the midrash to Meron, and a traveller of about 1215 to Kfar Chananya. The 1971–77 excavation of ancient Meiron produced a village, seven strata, houses and workshops — and <strong>not one tomb identification</strong>. Nothing here is archaeologically established." },
+      { t: "wow", label: "The Ari's own school says the third grave is someone else", x: [
+        "People will tell you the third marker in the chamber is <strong>Rabbi Yitzchak Nafcha</strong>. <em>Sha'ar HaGilgulim</em> places him in a split rock near Tzfat — and Shmuel Vital adds a gloss saying so outright: <em>“it is explicit here that he is not buried with Rashbi and his son in Meron, as people say that the third marker there is Rabbi Yitzchak.”</em>",
+        "And on Meron itself, Chaim Vital — who elsewhere in the same chapter is happy to write <em>“the people erred”</em> — will only go as far as: <span class='hebrew'>שָׁם קָבוּר הרשב״י… כְּמוֹ שֶׁאוֹמְרִים הָעוֹלָם</span>, <strong>“as people say.”</strong>"
+      ] },
+      { t: "p", x: "The Bavli's account of how Rabbi Elazar came to lie beside his father is worth carrying up the hill. His bier was brought on erev Yom Kippur, and a serpent lay with its tail in its mouth, encircling the cave and sealing it. They addressed it: <span class='hebrew'>עַכְנָא עַכְנָא! פִּתְחִי פִּיךְ וְיִכָּנֵס בֵּן אֵצֶל אָבִיו</span> — <em>serpent, serpent! Open your mouth, and let a son come in beside his father.</em>" }
+    ]},
+    { h: "The mountain, the synagogue, and the lintel", b: [
+      { t: "p", x: "<strong>Har Meron</strong> is the highest point in Israel within the Green Line at about 1,204 metres, inside a nature reserve of some 84,000 dunams." },
+      { t: "p", x: "The ancient synagogue below was excavated across five seasons between 1971 and 1977. Its façade dates to roughly <strong>280–330 CE</strong>, which makes it the earliest known example of the “Galilean-type” basilica synagogue — eight columns a side, triple portal facing south toward Jerusalem." },
+      { t: "wow", label: "Two things about the famous lintel", x: [
+        "The tradition that Mashiach comes when it falls is real, and older than most people assume — but the earliest version, from a student of the Bartenura in <strong>1495</strong>, says <span class='hebrew'>כותל</span>, <strong>the wall</strong>, not the lintel. The lintel-specific form is the later popular one.",
+        "And it is not standing untouched. It is cracked, and it has been artificially reinforced. While you are looking at the three portals: <strong>one of them is modern</strong> — the western portal was reconstructed in the 1950s."
+      ] },
+      { t: "tradition", label: "Meron in Tanach, carefully", x: "Meron is <strong>not</strong> in Yehoshua 19 — neither in Naftali's nineteen fortified towns nor in Asher's list. No verse names it, so its tribe is an inference, not a text. Yehoshua 11's battle at <span class='hebrew'>מֵי מֵרוֹם</span> is genuinely disputed: Lake Hula, a site on this massif, and the Horns of Hattin all have serious backers. And <em>Shimron-Meron</em> in Yehoshua 12:20 is most likely the Shimron near Nazareth. Where Meron <em>does</em> appear is the Yerushalmi — as the olive capital: one eats olives until they are finished <span class='hebrew'>מִמֵּרוֹן וּמִגּוּשׁ חָלָב</span>." }
     ]}
   ],
   more: [
+    { s: "Chai rotel, and where it actually comes from", b: [
+      { t: "p", x: "You will be offered drink here, and told that distributing eighteen <em>rotl</em> is an ancient segulah." },
+      { t: "wow", label: "One man, one vow, 1873", x: [
+        "The earliest known mention is a Jerusalem book of <strong>1873</strong>. Its author describes meeting two men at Meron pressing drink on everyone, and asking why. One of them, childless for fourteen years, had at a previous Lag BaOmer called out in a festive mood that he would give eighteen rotl of drink if he were granted a son — and the crowd answered amen.",
+        "The author was writing it down because he found it <em>surprising</em>. There is no earlier source. It reached today's organisations through a 1912 letter and a 1966 book.",
+        "The original accounts tie it only to children. Shidduchim, health and parnassah are modern extensions. Rav Chaim Kanievsky, asked about the custom, said: <em>we never knew about it at all.</em>"
+      ] }
+    ]},
+    { s: "The Ari, and the Chasam Sofer — both usually misquoted", b: [
+      { t: "p", x: "<strong>The Ari.</strong> <em>Sha'ar HaKavanos</em> does record that he went to Meron on Lag BaOmer with his household and stayed three days — so the claim that the text says nothing is wrong. But Chaim Vital adds, of the Ari at that time, <em>“I do not know whether he was then expert in this wondrous wisdom that he later attained.”</em> The famous upsherin is second-hand testimony from Rabbi Yonatan Sagis, and <strong>it carries no date at all</strong> — nothing in the text puts the haircut on Lag BaOmer. And Vital calls it <span class='hebrew'>כְּמִנְהָג הַיָּדוּעַ</span>, <em>the known custom</em>: the Ari joined a practice that already existed. Vital's own stated purpose is defensive — <em>to show that this custom has a root.</em>" },
+      { t: "p", x: "<strong>The Chasam Sofer.</strong> He is constantly quoted as having banned Meron. His responsum never uses the word Meron — he writes “in the holy city of <em>Tzfat</em>.” His objection is to fixing a festival on a day with no miracle and no mention anywhere in Shas or poskim. And his conclusion is not a prohibition: <span class='hebrew'>לֹא יָדַעְתִּי אִם רַשָּׁאִים לַעֲשׂוֹת כֵּן</span> — <em>I do not know whether they are permitted to do so</em> — alongside a personal note that he kept apart from it himself. “He would not join, and said he did not know if it was permitted” is accurate. “He banned it” is not." }
+    ]},
     { s: "Practical: what changed after 2021, and what didn't", b: [
-      { t: "p", x: "On 30 April 2021, forty-five men and boys were killed in a crowd crush at the Lag BaOmer hilula here, and about 150 were injured. A state commission chaired by former Chief Justice Miriam Naor reported in March 2024 and found a culture of negligence." },
-      { t: "p", x: "Every documented restriction that followed — ticketing, capacity caps, a four-hour limit — attaches to <strong>Lag BaOmer</strong>. The official site page lists the tziyun as <span class='hebrew'>פתוח כל שעות היממה</span>, open around the clock including Shabbos and yom tov. Do not expect Lag BaOmer rules on a Thursday in Tishrei." },
+      { t: "p", x: "On the night of 29–30 April 2021, <strong>forty-five</strong> men and boys were killed in a crowd crush at the Lag BaOmer hilula here and about 150 were injured, among an estimated hundred thousand people. The State Commission of Inquiry published its final report on <strong>6 March 2024</strong>, calling it a disaster that could and should have been prevented and finding sixteen of the eighteen officials it examined personally responsible." },
+      { t: "p", x: "It was not the first, and it was not unforeseen. In <strong>1911</strong>, on Lag BaOmer night, a roof parapet gave way here and around a hundred people fell seven or eight metres; at least eleven died. Locals had warned the parapet was unsound on the eve of the hillula. And the <strong>State Comptroller warned in writing in 2008</strong> — thirteen years before the crush — about escape routes and a systemic failure that “endangers the hundreds of thousands of visitors.”" },
+      { t: "p", x: "Every restriction that followed attaches to <strong>Lag BaOmer</strong>: ticketing, timed slots, capacity caps. The official page lists the tziyun as <span class='hebrew'>פתוח כל שעות היממה</span> — open around the clock, including Shabbos and yom tov. Do not expect hilula rules on a Thursday in Tishrei." },
       { t: "p", x: "Facilities: disabled access, parking, drinking water, seating, candle-lighting, siddurim, restrooms, and lighting throughout." }
     ]}
   ],
   onsite: [
     "Open 24 hours, and lit — unlike Amuka.",
-    "This is the Mincha problem: mincha gedola is 13:03 and the slot here ends at 13:00. See the alert on the Now screen.",
-    "It is 1,204 m up. Noticeably cooler and windier than Tiberias will be.",
+    "This is the Mincha problem: mincha gedola is 13:03 and this slot ends at 13:00. See the alert on the Now screen.",
+    "Rabbi Shimon and Rabbi Elazar are in one domed chamber — Rashbi's marker in the southern corner, Rabbi Elazar's in the centre.",
+    "At 1,204 m it is the coolest and windiest stop of the day. Tiberias this afternoon will be about 7 °C warmer.",
     "Restrooms, water and candle-lighting on site."
   ]
 },
@@ -603,7 +684,7 @@ field: [
     "<strong>Rabbi Akiva</strong> — open 24 hours.",
     "<strong>Rabbi Meir Baal HaNess</strong> — posted hours, and the site is split into a Sephardi and an Ashkenazi compound. Confirm on 1-800-300-508 which set applies."
   ] },
-  { h: "Meron after 2021", p: "Forty-five people were killed in the Lag BaOmer crowd crush in April 2021, and a state commission reported in 2024. Every restriction that followed — tickets, capacity caps, a four-hour limit — attaches to <strong>Lag BaOmer</strong>. Nothing in the sources applies them to an ordinary weekday, and the official page lists plain 24-hour opening." },
+  { h: "Meron after 2021", p: "Forty-five people were killed in the Lag BaOmer crowd crush in April 2021, and a state commission published its final report on 6 March 2024. Every restriction that followed — tickets, capacity caps, a four-hour limit — attaches to <strong>Lag BaOmer</strong>. Nothing in the sources applies them to an ordinary weekday, and the official page lists plain 24-hour opening." },
   { h: "Heat and altitude", p: "Meron is 1,204 m. Tiberias is about 200 m below sea level. That is a drop of roughly 1,400 m between noon and four o'clock. Tzfat averages 28.5 °C in September; Tiberias averages 35.9 °C. Carry water from Amuka, and top up in Tzfat." },
   { h: "Lunch — verify before you drive", p: "<strong>Mandis, Tzfat.</strong> Hechsher confirmed by two independent directories: Badatz Eidah HaChareidis, meat. The address is not confirmed — the itinerary says Jerusalem 33, the Tzfat restaurant registry says Jerusalem 29 behind Bank Leumi, another listing says 35, and the operator publishes no address at all. Hours are not confirmed either. Call first." },
   { h: "Kohanim", p: "The Tzfat Old Cemetery is a hillside with unmarked and displaced graves — a survey found roughly 3,000 stones no longer in their original places. No operator publishes a ruling. Ask your own rav before the day, and note that the Ari Sephardi shul above the cemetery gives an overlook." },
@@ -642,6 +723,22 @@ sources: [
   { t: "Targum Pseudo-Jonathan — the misattribution", url: "https://en.wikipedia.org/wiki/Targum_Pseudo-Jonathan" },
   { t: "The 1837 Galilee earthquake — Dead Sea quake catalogue", url: "https://www.deadseaquake.info/EarthquakeCatalogOfTheDeadSea/1837CESafedQuake.html" },
   { t: "The 1577 Tzfat press and Lekach Tov", url: "https://cojs.org/1577-first-printing-press-middle-east-safed/" },
+  { t: "Sukkah 45b — “I can exempt the whole world from judgment”", url: "https://www.sefaria.org/Sukkah.45b" },
+  { t: "Bava Metzia 84b — the serpent at the cave, erev Yom Kippur", url: "https://www.sefaria.org/Bava_Metzia.84b" },
+  { t: "Yerushalmi Sheviis 9:1 — the cave, the thirteen years, the bird-catcher", url: "https://www.sefaria.org/Jerusalem_Talmud_Sheviit.9.1" },
+  { t: "Bereishis Rabbah 79:6 — the Eretz Yisrael version of the cave", url: "https://www.sefaria.org/Bereshit_Rabbah.79.6" },
+  { t: "Vayikra Rabbah 21:8 — thirteen years with Rabbi Akiva", url: "https://www.sefaria.org/Vayikra_Rabbah.21.8" },
+  { t: "Pesachim 112a — more than the calf wants to nurse", url: "https://www.sefaria.org/Pesachim.112a" },
+  { t: "Gittin 67a — “grinds much and brings out little”", url: "https://www.sefaria.org/Gittin.67a" },
+  { t: "Zohar, Idra Rabba — ten entered, seven came out", url: "https://www.sefaria.org/Zohar,_Idra_Rabba" },
+  { t: "Zohar, Idra Zuta — his last day, and no date anywhere in it", url: "https://www.sefaria.org/Zohar,_Idra_Zuta" },
+  { t: "Sha'ar HaGilgulim 37 — Rabbi Yitzchak Nafcha is not at Meron", url: "https://www.sefaria.org/Sha'ar_HaGilgulim.37" },
+  { t: "Shem HaGedolim — the Chida on the Zohar's authorship", url: "https://www.sefaria.org/Shem_HaGedolim,_Maarekhet_Sefarim,_Letter_Zayin.8" },
+  { t: "Mitpachas Sefarim 1 — Rabbi Yaakov Emden, in his own words", url: "https://www.sefaria.org/Mitpachat_Sefarim.1" },
+  { t: "Benjamin of Tudela's Itinerary — the Hillel and Shammai cave", url: "https://www.gutenberg.org/files/14981/14981-h/14981-h.htm" },
+  { t: "Seforim Blog — the printing error behind the Lag BaOmer yahrzeit", url: "https://seforimblog.com/2011/05/printing-mistake-and-mysterious-origins/" },
+  { t: "Zvi Ron, “The Origin of the Custom of Chai Rotl” (Ḥakirah 21)", url: "https://hakirah.org/vol21Ron.pdf" },
+  { t: "Meron disaster — State Commission of Inquiry final report", url: "https://www.gov.il/he/pages/state-commission-of-inquiry-mount-meron_reports_06032024" },
   { t: "Menachos 29b — Moshe in Rabbi Akiva's beis midrash", url: "https://www.sefaria.org/Menachot.29b" },
   { t: "Makkos 24b — the fox at Har HaBayis", url: "https://www.sefaria.org/Makkot.24b" },
   { t: "Berachos 61b — Rabbi Akiva's last Shema", url: "https://www.sefaria.org/Berakhot.61b" },

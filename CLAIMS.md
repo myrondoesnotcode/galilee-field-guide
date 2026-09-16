@@ -60,6 +60,30 @@ Hebcal converter: 17 September 2026 = 6 Tishrei 5787, parshas Ha'azinu.
   people. Ottoman registers count households for tax.
 - The Tiberian nikud dates from roughly the **7th–8th centuries**; the ben Asher
   family is its culmination, not its inventor.
+- **Hillel and Shammai are not documented as buried at Meron.** No ancient source
+  connects Hillel to the Galilee at all, or names his burial place. An earlier
+  version of this site asserted it as fact; it is now marked as tradition.
+- The **Zohar contains no date for Rashbi's death** — not Lag BaOmer, not 18
+  Iyar, not any month. Both Idrot were searched in full (179 paragraphs). The
+  text says only *b'hahu yoma*, "on that day." It also never says "the day of my
+  joy" — it says *hillula d'ili*; *b'yom simchasi* is from *Pri Etz Chaim*.
+- **"The sun did not set the day Rashbi died" is not in the Zohar.** No sun-word
+  appears anywhere in the Idra Zuta.
+- The Meron pilgrimage was **originally to the cave attributed to Hillel and
+  Shammai, on Pesach Sheni, for rain.** Benjamin of Tudela describes that cave
+  around 1170 and never mentions Rashbi anywhere in his itinerary.
+- The **Chasam Sofer never writes the word "Meron"** and did not ban it; he wrote
+  that he kept apart from it and *"I do not know whether they are permitted."*
+- **Chai rotel is not an ancient segulah** — one vow, recorded in 1873, and tied
+  in the original sources only to children.
+- The Bavli's **twelve years plus twelve months** and the Eretz Yisrael sources'
+  **flat thirteen** are different accounts, not two halves of one. The Eretz
+  Yisrael version has no spring, no sand, no Eliyahu and no burning — the cue to
+  leave is a bird-catcher.
+- The myrtle-branch scene is on **Shabbos 33b**, not 34a.
+- Rashbi's thirteen years with Rabbi Akiva are **Vayikra Rabbah 21:8**, not 21:7.
+- The Meron commission's final report is dated **6 March 2024**; Miriam Naor
+  chaired from 2021 but died in office, and Dvora Berliner signed it.
 
 ## Stated as tradition, never as fact
 
@@ -69,7 +93,12 @@ fire at the Ramak's levaya (hagiographic, and the two sources say fire and
 cloud) · the camel that carried the Rambam · Rabbi Meir buried upright · the
 sky-blue paint on the Tzfat graves (no source, several inconsistent
 explanations) · Hoshea ben Be'eri in Tzfat (four competing traditions) ·
-the Zohar's authorship · every 16th-century grave identification in Tzfat
+the Zohar's authorship · every grave identification at Meron (the earliest
+placing Rashbi there is c. 1187, and the 1971–77 excavation produced no burial
+identifications at all; Chaim Vital himself writes only "as people say") ·
+Rabbi Yitzchak Nafcha at Meron (*Sha'ar HaGilgulim* says explicitly he is
+elsewhere) · the lintel tradition (earliest attestation 1495, and it says
+*wall*) · every 16th-century grave identification in Tzfat
 (burial registers lost; the Radbaz's grave was itself lost for a century and
 only re-identified in 2015).
 
@@ -81,6 +110,7 @@ No opening hours for Mandis, and no street number: the itinerary says Jerusalem
 Eidah HaChareidis, meat) is confirmed by two independent directories. No
 drive-time estimates were independently validated. No claim that visiting any
 grave guarantees any outcome. Mei Merom is **not** securely identified with
-Meron — Lake Hula and the Horns of Hattin are live alternatives. No single death
+Meron — Lake Hula and the Horns of Hattin are live alternatives. Meron is named
+nowhere in Yehoshua 19, so no tribe is claimed for it. No single death
 toll is given for the 1837 earthquake; estimates run 1,700 to 5,000 and cannot
 be reconciled. No psak is offered for kohanim at the Tzfat cemetery.
