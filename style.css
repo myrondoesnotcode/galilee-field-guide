@@ -26,6 +26,7 @@
 
   /* The blue they actually paint the graves */
   --blue: #2B5C8A;
+  --comm: #5F4B8B;   /* commentary — deliberately not one of the four stop accents */
 
   /* Per-site accents, each the site's own element */
   --amuka:    #7E6410;  /* dry gold — the valley in Elul */
@@ -41,6 +42,12 @@
   --pad:  clamp(20px, 5.6vw, 34px);
   --rule: 1px solid var(--edge);
   --hair: 1px solid color-mix(in srgb, var(--edge) 55%, transparent);
+
+  /* Card fills. Tinting warm paper needs a LIGHTER hue than the border colour,
+     or the mix neutralises to grey. Night mode needs the opposite: less of it. */
+  --wow-fill:   color-mix(in srgb, var(--comm) 40%, var(--paper));
+  --trad-fill:  color-mix(in srgb, var(--ink) 8%, var(--paper));
+  --brief-fill: color-mix(in srgb, var(--acc, #A3170F) 21%, var(--paper));
 
   --navh: 60px;
   --barh: 42px;
@@ -62,10 +69,14 @@
   --red:      #E8554A;
   --red-soft: #F07A70;
   --blue:     #71A6D6;
+  --comm:     #A98FD6;
   --amuka:    #CFA53E;
   --meron:    #E8554A;
   --tzfat:    #71A6D6;
   --tiberias: #4FAE9C;
+  --wow-fill:   color-mix(in srgb, var(--comm) 17%, var(--paper));
+  --trad-fill:  color-mix(in srgb, var(--ink) 9%, var(--paper));
+  --brief-fill: color-mix(in srgb, var(--acc, #E8554A) 15%, var(--paper));
   color-scheme: dark;
 }
 
@@ -297,7 +308,12 @@ section { padding: 32px 0; }
 .chip.acc { color: var(--acc); border-color: var(--acc); }
 
 /* the sixty-second brief — set like the opening words of a chapter */
-.brief { padding: 20px 0 22px; border-bottom: var(--hair); }
+.brief {
+  padding: 18px 18px 20px; margin: 22px 0 6px;
+  background: var(--brief-fill);
+  border: 1px solid color-mix(in srgb, var(--acc) 45%, transparent);
+  border-left: 4px solid var(--acc);
+}
 .brief .eyebrow { color: var(--acc); display: block; margin-bottom: 10px; }
 .brief p { margin: 0; font-size: 1.16rem; color: var(--ink); line-height: 1.52; }
 .brief p + p { margin-top: 12px; }
@@ -307,11 +323,23 @@ section { padding: 32px 0; }
 }
 
 /* running text */
-.prose { padding-top: 6px; }
+.prose { padding-top: 6px; counter-reset: siman; }
 .prose h2 {
-  font-size: 1.5rem; margin: 34px 0 12px; font-variation-settings: "opsz" 40;
-  padding-top: 14px; border-top: var(--hair);
+  position: relative;
+  font-size: 1.5rem; margin: 40px 0 14px; font-variation-settings: "opsz" 40;
+  padding-top: 34px; border-top: 2px solid var(--ink);
+  scroll-margin-top: 56px;
 }
+.prose h2::before {
+  counter-increment: siman;
+  content: counter(siman, hebrew);
+  position: absolute; top: 10px; left: 0;
+  font-family: var(--hebrew); font-size: 12px; font-weight: 700;
+  color: var(--paper); background: var(--acc, var(--red));
+  padding: 2px 8px 3px; line-height: 1.25;
+}
+/* first paragraph after a heading carries a touch more weight */
+.prose h2 + p { font-size: 1.05rem; color: var(--ink); }
 .prose h3 { font-size: 1.12rem; margin: 24px 0 7px; font-variation-settings: "opsz" 20; }
 .prose p { margin: 0 0 14px; }
 .prose ul { margin: 0 0 14px; padding-left: 18px; }
@@ -320,7 +348,11 @@ section { padding: 32px 0; }
 .prose em { color: var(--ink); }
 
 /* a quoted primary text — set as a sefer sets a maamar: indented, ruled, Hebrew first */
-.source-quote { margin: 20px 0; padding: 0 0 0 16px; border-left: 3px double var(--acc, var(--red)); }
+.source-quote {
+  margin: 24px 0; padding: 16px 17px 15px;
+  background: var(--paper-2); border: 1px solid var(--edge);
+  border-left: 4px double var(--acc, var(--red));
+}
 .source-quote .he {
   font-family: var(--hebrew); font-size: 1.22rem; line-height: 1.95; color: var(--ink);
   direction: rtl; text-align: right; margin-bottom: 9px; font-weight: 500;
@@ -334,29 +366,34 @@ section { padding: 32px 0; }
 /* MARGINALIA — the signature. The astonishing fact lives in the margin,
    marked with a Hebrew letter, exactly the way a sefer marks a comment. */
 .wow {
-  position: relative; margin: 22px 0; padding: 14px 0 14px 34px;
-  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--blue) 6%, transparent);
+  position: relative; margin: 24px 0; padding: 30px 17px 16px;
+  background: var(--wow-fill);
+  border: 1px solid color-mix(in srgb, var(--comm) 60%, transparent);
+  border-left: 4px solid var(--comm);
 }
 .wow::before {
-  content: "׳"; position: absolute; left: 9px; top: 13px;
-  font-family: var(--hebrew); font-size: 1.15rem; font-weight: 700; color: var(--blue);
+  content: "פירוש"; position: absolute; left: -1px; top: -1px;
+  font-family: var(--hebrew); font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  color: var(--paper); background: var(--comm); padding: 3px 9px 4px; line-height: 1.2;
 }
-.wow .eyebrow { color: var(--blue); display: block; margin-bottom: 7px; }
-.wow p { margin: 0; color: var(--ink); font-size: .97rem; line-height: 1.55; }
+.wow .eyebrow { color: color-mix(in srgb, var(--comm) 72%, var(--ink)); display: block; margin-bottom: 8px; font-weight: 600; }
+.wow p { margin: 0; color: var(--ink); font-size: .97rem; line-height: 1.58; }
 .wow p + p { margin-top: 9px; }
 
 /* honesty marker — tradition vs documented history, shown not hidden */
 .tradition {
-  margin: 18px 0; padding: 12px 0 12px 34px; position: relative;
-  border-top: var(--hair); border-bottom: var(--hair);
-  font-size: .94rem; color: var(--ink-2);
+  margin: 22px 0; padding: 29px 17px 15px; position: relative;
+  background: var(--trad-fill);
+  border: 1px solid color-mix(in srgb, var(--amuka) 50%, transparent);
+  border-left: 4px solid var(--amuka);
+  font-size: .95rem; color: var(--ink-2); line-height: 1.58;
 }
 .tradition::before {
-  content: "≈"; position: absolute; left: 11px; top: 12px;
-  font-family: var(--marg); font-size: 1rem; color: var(--ink-4);
+  content: "≈ מסורת"; position: absolute; left: -1px; top: -1px;
+  font-family: var(--hebrew); font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  color: var(--paper); background: var(--amuka); padding: 3px 9px 4px; line-height: 1.2;
 }
-.tradition .eyebrow { color: var(--ink-4); display: block; margin-bottom: 5px; }
+.tradition .eyebrow { color: color-mix(in srgb, var(--amuka) 78%, var(--ink)); display: block; margin-bottom: 6px; font-weight: 600; }
 
 details.more { border-top: var(--hair); }
 .prose + details.more { border-top: 1px solid var(--ink); }
@@ -383,6 +420,25 @@ details.more .inner { padding: 0 0 16px; }
 .act b { font-family: var(--display); font-size: 1.02rem; color: var(--ink); font-weight: 600; font-variation-settings: "opsz" 16; }
 .actions .act:nth-child(2n) { border-right: 0; }
 .actions .act:nth-last-child(-n+2) { border-bottom: 0; }
+
+/* ---------- 10b. SECTION INDEX — see the shape before you read ---------- */
+.secindex { margin: 20px 0 4px; border: 1px solid var(--edge); background: var(--paper-2); }
+.secindex .eyebrow {
+  display: block; padding: 11px 15px 9px; border-bottom: 1px solid var(--edge);
+  color: var(--acc, var(--red));
+}
+.secindex ol { list-style: none; margin: 0; padding: 6px 0 8px; counter-reset: si; }
+.secindex li { counter-increment: si; }
+.secindex a {
+  display: flex; gap: 11px; align-items: baseline;
+  padding: 8px 15px; text-decoration: none; color: var(--ink-2);
+  font-size: .95rem; line-height: 1.35;
+}
+.secindex a:hover { background: color-mix(in srgb, var(--acc, var(--red)) 10%, transparent); color: var(--ink); }
+.secindex a::before {
+  content: counter(si, hebrew); flex: 0 0 auto; min-width: 16px;
+  font-family: var(--hebrew); font-size: .88rem; font-weight: 700; color: var(--acc, var(--red));
+}
 
 /* ---------- 11. TEFILLOS ---------- */
 .tefilla { margin: 22px 0; border: 1px solid var(--ink); }
@@ -477,12 +533,9 @@ details.more .inner { padding: 0 0 16px; }
   #v-stop .actions, #v-stop details.more, #v-stop .fieldcard { max-width: 640px; }
   #v-stop .prose { position: relative; }
   #v-stop .prose .wow {
-    float: right; width: 268px; clear: right;
-    margin: 6px -330px 24px 40px;
-    border-top: 0; border-bottom: 0; border-left: 1px solid var(--ink);
-    padding: 2px 0 10px 18px; background: none;
+    float: right; width: 272px; clear: right;
+    margin: 6px -336px 26px 40px;
   }
-  #v-stop .prose .wow::before { left: -9px; top: 0; background: var(--paper); padding: 1px 2px; }
   #v-stop .prose .wow p { font-size: .9rem; line-height: 1.5; }
   .nav { grid-template-columns: repeat(5, 116px); justify-content: center; }
 }

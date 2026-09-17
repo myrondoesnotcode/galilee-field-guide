@@ -249,9 +249,16 @@
       h += '</div>';
     }
 
+    if ((s.sections || []).length > 1) {
+      h += '<nav class="secindex"><span class="eyebrow">What is on this page</span><ol>' +
+        s.sections.map(function (sec, i) {
+          return '<li><a href="#/stop/' + esc(s.id) + '" data-sec="sec-' + i + '">' + esc(sec.h) + '</a></li>';
+        }).join('') + '</ol></nav>';
+    }
+
     h += '<div class="prose">';
-    (s.sections || []).forEach(function (sec) {
-      h += '<h2>' + esc(sec.h) + '</h2>' + blocks(sec.b);
+    (s.sections || []).forEach(function (sec, i) {
+      h += '<h2 id="sec-' + i + '">' + esc(sec.h) + '</h2>' + blocks(sec.b);
     });
     h += '</div>';
 
@@ -271,6 +278,15 @@
     h += '</div></div>';
 
     m.innerHTML = h;
+
+    $$('.secindex a', m).forEach(function (a) {
+      a.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        var t = document.getElementById(a.dataset.sec);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
     window.scrollTo(0, 0);
   }
 
