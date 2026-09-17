@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -73,6 +73,12 @@
         <div class="stops" id="route-full" style="margin-top:24px"></div>
       </section>
       <section>
+        <span class="eyebrow">The shape of the day</span>
+        <h2 style="font-size:1.5rem;margin:12px 0 6px">You climb a mountain, then drive below the sea</h2>
+        <p class="muted" style="font-size:.93rem;margin:0 0 18px">Meron is the highest point in Israel inside the Green Line. Teveria is the lowest city in the country. You do both between lunch and mincha.</p>
+        <div id="elev-mount"></div>
+      </section>
+      <section>
         <span class="eyebrow">Zmanim · Tzfat</span>
         <h2 style="font-size:1.5rem;margin:12px 0 16px">Halachic times for the day</h2>
         <table class="zman" id="zman-table"></table>
@@ -94,6 +100,12 @@
         <div class="sagegrid" id="sage-mount" style="margin-top:24px"></div>
       </section>
       <section>
+        <span class="eyebrow">Drag through the centuries</span>
+        <h2 style="font-size:1.5rem;margin:12px 0 6px">Who was alive when</h2>
+        <p class="muted" style="font-size:.93rem;margin:0 0 18px">Pull the handle. Watch the gap between Rabbi Meir and the Rambam go by — nine hundred years in one thumb-swipe.</p>
+        <div id="scrub-mount"></div>
+      </section>
+      <section>
         <span class="eyebrow">The time spine</span>
         <h2 style="font-size:1.6rem;margin:12px 0 6px">Where today's stops sit in Jewish history</h2>
         <p class="muted" style="font-size:.93rem;margin:0 0 22px">Lit markers are stops on your route.</p>
@@ -111,6 +123,20 @@
   <!-- ============ SOURCES ============ -->
   <section class="view" id="v-sources"><div class="wrap" id="sources-mount"></div></section>
 </main>
+
+<button class="omt-btn" id="omt-btn" type="button">
+  <span class="he">עוֹד דָּבָר אֶחָד</span><span class="en">One more thing</span>
+</button>
+
+<div class="omt" id="omt" hidden role="dialog" aria-modal="true" aria-label="A marginal note, at random">
+  <div class="omt-card">
+    <div class="omt-body" id="omt-body"></div>
+    <div class="omt-foot">
+      <button type="button" id="omt-again">Another →</button>
+      <button type="button" id="omt-close">Close</button>
+    </div>
+  </div>
+</div>
 
 <nav class="nav" id="nav">
   <a href="#/now" data-v="now">
@@ -135,8 +161,8 @@
   </a>
 </nav>
 
-<script src="content.js?v=6"></script>
-<script src="app.js?v=6"></script>
+<script src="content.js?v=8"></script>
+<script src="app.js?v=8"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {

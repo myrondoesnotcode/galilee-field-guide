@@ -375,6 +375,148 @@
     }).join('');
   }
 
+
+  /* ---------- ELEVATION PROFILE ----------
+     The day climbs to 1,204 m and drops to 200 m below sea level.
+     Nobody sees that curve unless you draw it. */
+  function renderElevation() {
+    var mount = $('#elev-mount');
+    if (!mount || !C.elevation) return;
+    var pts = C.elevation.points;
+    var W = 660, H = 190, padX = 46, padY = 26;
+    var hi = 1320, lo = -320;
+    var x = function (i) { return padX + (i * (W - padX * 2)) / (pts.length - 1); };
+    var y = function (m) { return padY + ((hi - m) / (hi - lo)) * (H - padY * 2); };
+    var sea = y(0);
+
+    var line = pts.map(function (p, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p.m).toFixed(1); }).join(' ');
+    var area = line + ' L' + x(pts.length - 1).toFixed(1) + ' ' + sea.toFixed(1) + ' L' + x(0).toFixed(1) + ' ' + sea.toFixed(1) + ' Z';
+
+    var dots = pts.map(function (p, i) {
+      var cy = y(p.m);
+      return '<circle class="ev-dot" cx="' + x(i).toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="4.5"' +
+             ' style="animation-delay:' + (0.75 + i * 0.13) + 's"/>' +
+             '<text class="ev-place" x="' + x(i).toFixed(1) + '" y="' + (H - 6) + '">' + esc(p.at) + '</text>' +
+             (p.label ? '<text class="ev-m" x="' + x(i).toFixed(1) + '" y="' + (cy - 12).toFixed(1) + '">' + esc(p.label) + '</text>' : '');
+    }).join('');
+
+    mount.innerHTML =
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" class="elev" role="img" aria-label="Elevation across the day: sea level at Tel Aviv, 1,204 metres at Meron, 937 at Tzfat, 200 metres below sea level at Teveria.">' +
+        '<line class="ev-sea" x1="' + padX + '" y1="' + sea.toFixed(1) + '" x2="' + (W - padX) + '" y2="' + sea.toFixed(1) + '"/>' +
+        '<text class="ev-sealabel" x="' + (padX - 6) + '" y="' + (sea - 5).toFixed(1) + '">sea level</text>' +
+        '<path class="ev-area" d="' + area + '"/>' +
+        '<path class="ev-line" d="' + line + '"/>' +
+        dots +
+      '</svg>' +
+      '<p class="ev-note">' + esc(C.elevation.note) + '</p>';
+  }
+
+  /* ---------- CENTURY SCRUBBER ----------
+     Drag through time. The ~900 empty years between Rabbi Meir and the
+     Rambam are the point of the whole trip, and you can feel them here. */
+  function renderScrubber() {
+    var mount = $('#scrub-mount');
+    if (!mount) return;
+    mount.innerHTML =
+      '<div class="scrub">' +
+        '<div class="scrub-head">' +
+          '<span class="scrub-year" id="scrub-year">—</span>' +
+          '<span class="scrub-live" id="scrub-live"></span>' +
+        '</div>' +
+        '<input type="range" id="scrub" min="1" max="2026" value="1" step="1" aria-label="Drag through the centuries">' +
+        '<div class="scrub-ticks" id="scrub-ticks"></div>' +
+        '<ul class="scrub-list" id="scrub-list"></ul>' +
+      '</div>';
+
+    var ticks = C.sages.map(function (s) {
+      return '<i style="left:' + ((s.from / 2026) * 100).toFixed(2) + '%;background:' + s.accent + '"></i>';
+    }).join('');
+    $('#scrub-ticks').innerHTML = ticks;
+
+    var list = $('#scrub-list');
+    list.innerHTML = C.sages.map(function (s, i) {
+      return '<li data-i="' + i + '"><b>' + esc(s.name) + '</b><span>' + esc(s.years) + '</span></li>';
+    }).join('');
+
+    function paint(yr) {
+      $('#scrub-year').textContent = yr < 1 ? '—' : yr + ' CE';
+      var alive = 0;
+      $$('#scrub-list li').forEach(function (li) {
+        var s = C.sages[+li.dataset.i];
+        var on = yr >= s.from && yr <= s.to;
+        li.classList.toggle('on', on);
+        li.style.setProperty('--acc', s.accent);
+        if (on) alive++;
+      });
+      var l = $('#scrub-live');
+      if (alive) {
+        l.textContent = alive + (alive === 1 ? ' of the ten alive' : ' of the ten alive');
+      } else {
+        var earliest = Math.min.apply(null, C.sages.map(function (s) { return s.from; }));
+        var latest = Math.max.apply(null, C.sages.map(function (s) { return s.to; }));
+        if (yr < earliest) l.textContent = 'none of them born yet';
+        else if (yr > latest) l.textContent = 'all ten are gone';
+        else l.textContent = 'the gap \u2014 nobody on your route is alive';
+      }
+      l.classList.toggle('empty', !alive);
+    }
+
+    var input = $('#scrub');
+    input.addEventListener('input', function () { paint(+input.value); });
+    paint(1);
+  }
+
+  /* ---------- ONE MORE THING ----------
+     40 marginal notes across the site. Pull one at random.
+     Built for somebody on a bus who wants something to read out loud. */
+  var POOL = null;
+  function buildPool() {
+    POOL = [];
+    C.stops.forEach(function (st) {
+      function scan(bl) {
+        (bl || []).forEach(function (b) {
+          if (b && b.t === 'wow') POOL.push({ label: b.label, x: b.x, stop: st });
+        });
+      }
+      (st.sections || []).forEach(function (sec) { scan(sec.b); });
+      (st.more || []).forEach(function (d) { scan(d.b); });
+    });
+  }
+  var lastPick = -1;
+  function showOneMore() {
+    if (!POOL) buildPool();
+    if (!POOL.length) return;
+    var i = Math.floor(Math.random() * POOL.length);
+    if (POOL.length > 1) { while (i === lastPick) i = Math.floor(Math.random() * POOL.length); }
+    lastPick = i;
+    var w = POOL[i];
+    var d = $('#omt');
+    d.style.setProperty('--acc', w.stop.accent);
+    $('#omt-body').innerHTML =
+      '<span class="eyebrow">' + esc(w.stop.name) + ' · ' + esc(w.label || 'Worth knowing') + '</span>' +
+      w.x.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+      '<a class="omt-go" href="#/stop/' + esc(w.stop.id) + '">Read the whole stop →</a>';
+    d.hidden = false;
+    d.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function hideOneMore() {
+    $('#omt').hidden = true;
+    document.body.style.overflow = '';
+  }
+  function initOneMore() {
+    $('#omt-btn').addEventListener('click', showOneMore);
+    $('#omt-again').addEventListener('click', showOneMore);
+    $('#omt-close').addEventListener('click', hideOneMore);
+    $('#omt').addEventListener('click', function (e) { if (e.target.id === 'omt') hideOneMore(); });
+    $('#omt-body').addEventListener('click', function (e) {
+      if (e.target.classList.contains('omt-go')) hideOneMore();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !$('#omt').hidden) hideOneMore();
+    });
+  }
+
   /* ---------- ROUTER ---------- */
   var VIEWS = ['now', 'route', 'stop', 'sages', 'tefillos', 'field', 'sources'];
   function route() {
@@ -422,6 +564,9 @@
     renderField();
     renderSources();
     renderZmanim();
+    renderElevation();
+    renderScrubber();
+    initOneMore();
     renderNowAlerts();
     renderLive();
     renderNowBar();
