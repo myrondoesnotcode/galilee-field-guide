@@ -1,7 +1,7 @@
 /* Offline-first. Amuka and Meron sit in valleys with poor reception —
    everything must survive zero bars. Bump CACHE on every content change. */
-var CACHE = 'galilee-v8';
-var V = '8';
+var CACHE = 'galilee-v10';
+var V = '10';
 var CORE = [
   './', './index.html',
   './style.css?v=' + V, './content.js?v=' + V, './app.js?v=' + V,

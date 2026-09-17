@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -128,6 +128,16 @@
   <span class="he">עוֹד דָּבָר אֶחָד</span><span class="en">One more thing</span>
 </button>
 
+<div class="glx" id="glx" hidden role="dialog" aria-modal="true" aria-label="Definition">
+  <div class="glx-card">
+    <div class="glx-body">
+      <b id="gl-word"></b>
+      <p id="gl-def"></p>
+    </div>
+    <button type="button" id="gl-close">Got it</button>
+  </div>
+</div>
+
 <div class="omt" id="omt" hidden role="dialog" aria-modal="true" aria-label="A marginal note, at random">
   <div class="omt-card">
     <div class="omt-body" id="omt-body"></div>
@@ -161,8 +171,8 @@
   </a>
 </nav>
 
-<script src="content.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<script src="content.js?v=10"></script>
+<script src="app.js?v=10"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {

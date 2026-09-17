@@ -279,6 +279,8 @@
 
     m.innerHTML = h;
 
+    glossify(m);
+
     $$('.secindex a', m).forEach(function (a) {
       a.addEventListener('click', function (ev) {
         ev.preventDefault();
@@ -325,6 +327,7 @@
         '</div></div>';
     }).join('') + '</section>';
     $('#tefilla-mount').innerHTML = h;
+    glossify($('#tefilla-mount'));
   }
 
   /* ---------- FIELD ---------- */
@@ -345,6 +348,7 @@
       }).join('') + '</div></section>';
     h += '<section style="padding-top:8px"><a class="act" href="#/sources" style="display:block"><span>Every claim, traced</span><b>Sources &amp; how we checked →</b></a></section>';
     $('#field-mount').innerHTML = h;
+    glossify($('#field-mount'));
   }
 
   /* ---------- SOURCES ---------- */
@@ -496,6 +500,7 @@
       '<span class="eyebrow">' + esc(w.stop.name) + ' · ' + esc(w.label || 'Worth knowing') + '</span>' +
       w.x.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
       '<a class="omt-go" href="#/stop/' + esc(w.stop.id) + '">Read the whole stop →</a>';
+    glossify($('#omt-body'));
     d.hidden = false;
     d.scrollTop = 0;
     document.body.style.overflow = 'hidden';
@@ -514,6 +519,78 @@
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !$('#omt').hidden) hideOneMore();
+    });
+  }
+
+
+  /* ---------- GLOSSARY ----------
+     Every hard word becomes tappable, first time it appears in a view.
+     Nobody should be left holding a question they can't answer on the bus. */
+  var GTERMS = null;
+  function reEsc(t) { return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  function glossify(root) {
+    if (!C.glossary || !root) return;
+    if (!GTERMS) {
+      GTERMS = Object.keys(C.glossary).sort(function (a, b) { return b.length - a.length; });
+    }
+    var used = {};
+    var SKIP = { A: 1, BUTTON: 1, CITE: 1, SCRIPT: 1, STYLE: 1, H1: 1, H2: 1, H3: 1 };
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        while (p && p !== root) {
+          if (SKIP[p.tagName]) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('hebrew') || p.classList.contains('he') ||
+                              p.classList.contains('eyebrow') || p.classList.contains('gl'))) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentElement;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(function (n) {
+      for (var i = 0; i < GTERMS.length; i++) {
+        var t = GTERMS[i];
+        if (used[t]) continue;
+        var re = new RegExp("(^|[^A-Za-z’'\\-])(" + reEsc(t) + ")(?![A-Za-z’'\\-])", 'i');
+        var m = n.nodeValue.match(re);
+        if (!m) continue;
+        var at = m.index + m[1].length;
+        var rest = n.splitText(at);
+        rest.nodeValue = rest.nodeValue.slice(m[2].length);
+        var b = document.createElement('button');
+        b.className = 'gl'; b.type = 'button';
+        b.setAttribute('data-t', t);
+        b.setAttribute('aria-label', m[2] + ' — tap for a definition');
+        b.textContent = m[2];
+        rest.parentNode.insertBefore(b, rest);
+        used[t] = 1;
+        return;
+      }
+    });
+  }
+
+  function showGloss(term, word) {
+    var def = C.glossary[term];
+    if (!def) return;
+    $('#gl-word').textContent = word || term;
+    $('#gl-def').textContent = def;
+    $('#glx').hidden = false;
+  }
+  function initGloss() {
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button.gl') : null;
+      if (b) { e.preventDefault(); showGloss(b.getAttribute('data-t'), b.textContent); return; }
+      if (e.target.id === 'glx' || e.target.id === 'gl-close') $('#glx').hidden = true;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !$('#glx').hidden) $('#glx').hidden = true;
     });
   }
 
@@ -567,6 +644,9 @@
     renderElevation();
     renderScrubber();
     initOneMore();
+    initGloss();
+    glossify($('#now-alerts'));
+    glossify($('#v-sages'));
     renderNowAlerts();
     renderLive();
     renderNowBar();

@@ -671,3 +671,39 @@ details.more .inner { padding: 0 0 16px; }
   .shaar .foot     { animation: riseIn .7s var(--ease) .55s both; }
   @keyframes riseIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
 }
+
+/* ---------- glossary: tappable terms ---------- */
+button.gl {
+  font: inherit; color: inherit; padding: 0; cursor: help;
+  border-bottom: 1px dotted color-mix(in srgb, var(--comm) 75%, transparent);
+  text-underline-offset: 2px;
+}
+button.gl::after {
+  content: "?"; font-family: var(--marg); font-size: .58em; font-weight: 500;
+  vertical-align: super; margin-left: 1px; color: var(--comm); opacity: .8;
+}
+button.gl:hover { background: color-mix(in srgb, var(--comm) 16%, transparent); }
+
+.glx {
+  position: fixed; inset: 0; z-index: 95; display: flex; align-items: flex-end; justify-content: center;
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  animation: omtIn .18s var(--ease);
+}
+.glx-card {
+  width: 100%; max-width: 520px; background: var(--paper);
+  border-top: 5px solid var(--comm);
+  padding-bottom: env(safe-area-inset-bottom);
+  animation: omtUp .24s var(--ease);
+}
+.glx-body { padding: 20px var(--pad) 16px; }
+.glx-body b {
+  display: block; font-family: var(--display); font-size: 1.45rem; color: var(--ink);
+  font-weight: 700; font-variation-settings: "opsz" 24; margin-bottom: 8px;
+}
+.glx-body p { margin: 0; font-size: 1.04rem; line-height: 1.55; color: var(--ink-2); }
+#gl-close {
+  display: block; width: 100%; padding: 15px; border-top: 1px solid var(--ink);
+  font-family: var(--marg); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--comm); font-weight: 500;
+}
+#gl-close:hover { background: var(--paper-2); }

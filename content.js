@@ -9,6 +9,76 @@ var gmaps = function (q) { return "https://www.google.com/maps/search/?api=1&que
 
 window.CONTENT = {
 
+/* Plain-English definitions. Tapping a term anywhere on the site opens one.
+   Written for someone who did not grow up with the word. */
+glossary: {
+  "Tanach": "The Hebrew Bible — Torah, Prophets and Writings.",
+  "Chumash": "The Five Books of Moshe, in book form.",
+  "Mikraos Gedolos": "A Chumash printed with the classic commentaries laid around the text.",
+  "Gemara": "The Talmud’s discussion and analysis of the Mishnah.",
+  "Mishnah": "The core text of the Oral Law, written down around 200 CE.",
+  "Talmud": "Mishnah plus Gemara — the central text of Jewish law and thought.",
+  "Bavli": "The Babylonian Talmud.",
+  "Yerushalmi": "The Jerusalem Talmud, compiled here in Eretz Yisrael.",
+  "daf": "A page of Talmud. A citation like “Shabbos 33b” points to one.",
+  "baraita": "A teaching from the Mishnah’s era that did not make it into the Mishnah itself.",
+  "sugya": "One extended discussion in the Gemara.",
+  "kal vachomer": "A standard form of Torah reasoning: if it is true in the lighter case, how much more so in the heavier one.",
+  "bas kol": "A voice from Heaven.",
+  "Tanna": "A sage of the Mishnah’s era, roughly the first two centuries CE.",
+  "Targum": "The Aramaic translation of Tanach, read alongside the Hebrew.",
+  "halacha": "Jewish law.",
+  "aggadah": "The non-legal side of the Talmud — stories, ethics, history.",
+  "poskim": "Rabbis who decide practical Jewish law.",
+  "psak": "A ruling in Jewish law.",
+  "kevarim": "Graves.",
+  "kever": "A grave.",
+  "tzaddik": "A righteous person — here, one of the great sages buried along this route.",
+  "tziyun": "The marked structure built over a grave.",
+  "matzeivah": "A gravestone.",
+  "segulah": "A practice believed to bring about a spiritual benefit.",
+  "shidduch": "A marriage match.",
+  "yahrzeit": "The anniversary of a death, kept by the Hebrew date.",
+  "hillula": "A celebration held on a tzaddik’s yahrzeit.",
+  "minhag": "A custom.",
+  "semichah": "Rabbinic ordination, passed hand to hand from Moshe. The chain broke in ancient times — which is what Tzfat tried to repair in 1538.",
+  "kohanim": "Descendants of Aharon, who may not enter a cemetery.",
+  "upsherin": "A boy’s first haircut, at three years old.",
+  "mekubalim": "Kabbalists.",
+  "Kabbalah": "The mystical tradition of Torah.",
+  "Zohar": "The foundational work of Kabbalah.",
+  "nikud": "The vowel dots written under and around Hebrew letters.",
+  "te’amim": "The cantillation marks that carry the tune of the Torah reading.",
+  "Masoretes": "The scholars who fixed the text, vowels and notes of Tanach.",
+  "zmanim": "The halachic times of the day, which shift with the sun through the year.",
+  "chatzot": "Halachic midday — the midpoint between sunrise and sunset, not 12:00 on the clock.",
+  "mincha gedola": "The earliest time Mincha may be davened — about half an hour after chatzot.",
+  "Mincha": "The afternoon prayer.",
+  "daven": "To pray.",
+  "hechsher": "Kosher certification.",
+  "Badatz": "A strict kosher certifying body.",
+  "Kotel": "The Western Wall in Jerusalem.",
+  "Shabbos": "Shabbat — the Sabbath.",
+  "Shechinah": "The Divine Presence.",
+  "Eretz Yisrael": "The Land of Israel.",
+  "Aseres Yemei Teshuva": "The Ten Days of Repentance, from Rosh Hashanah through Yom Kippur.",
+  "teshuva": "Return — repentance.",
+  "beis midrash": "A study hall.",
+  "churban": "The destruction of the Beis HaMikdash.",
+  "Beis HaMikdash": "The Temple in Jerusalem.",
+  "Sanhedrin": "The supreme Jewish court of seventy-one sages.",
+  "tumah": "Ritual impurity.",
+  "Shulchan Aruch": "The authoritative code of Jewish law, written in Tzfat’s golden age.",
+  "Mishnah Berurah": "A standard modern commentary on everyday Jewish law.",
+  "Rema": "Rabbi Moshe Isserles, whose glosses give the Ashkenazi practice in the Shulchan Aruch.",
+  "tzedakah": "Charity.",
+  "Tehillim": "Psalms.",
+  "hekdesh": "A charitable trust that holds property for a holy purpose.",
+  "Lag BaOmer": "The 33rd day of the Omer — traditionally Rashbi’s yahrzeit, marked with bonfires.",
+  "Pesach Sheni": "The “second Pesach,” a month after Pesach, on 14 Iyar.",
+  "tichel": "A headscarf worn by married women."
+},
+
 day: {
   greg: "Thursday 17 September 2026",
   gregShort: "Thu 17 Sep 2026",
@@ -92,7 +162,7 @@ stops: [
         cite: "Sukkah 28a · Bava Batra 134a", url: "https://www.sefaria.org/Sukkah.28a" },
       { t: "p", x: "Thirty of the eighty were worthy that the Shechinah rest upon them <em>as it rested on Moshe Rabbeinu</em>. Thirty were worthy that the sun stand still for them <em>as it stood for Yehoshua bin Nun</em>. Twenty were in between. Rabban Yochanan ben Zakkai was in the bottom tier." },
       { t: "wow", label: "That was the floor, not the ceiling", x: [
-        "To show how great the <em>least</em> of them was, the Gemara lists what Rabban Yochanan ben Zakkai knew — Scripture, Mishnah, Gemara, halachah, aggadah, the astronomical cycles, gematrios, and then <span class='hebrew'>שִׂיחַת שֵׁדִים, וְשִׂיחַת דְּקָלִים, וְשִׂיחַת מַלְאֲכֵי הַשָּׁרֵת</span>: the speech of demons, the speech of palm trees, and the speech of the ministering angels.",
+        "So the Gemara lists what the <em>least</em> of them knew. Tanach, Mishnah, Gemara, halachah, aggadah, the astronomical cycles, gematrios. And then: <span class='hebrew'>שִׂיחַת שֵׁדִים, וְשִׂיחַת דְּקָלִים, וְשִׂיחַת מַלְאֲכֵי הַשָּׁרֵת</span> — the speech of demons, the speech of palm trees, and the speech of the ministering angels.",
         "Then it concludes: <em>and if this is the smallest of them, the greatest of them — how much more so.</em> Everything on that list is the floor. The man in front of you stood at the top of it."
       ] }
     ]},
@@ -159,7 +229,7 @@ stops: [
     ]},
     { h: "The ground you're standing on", b: [
       { t: "p", x: "Amuka sits about five kilometers north-east of Tzfat, on the western edge of <strong>Yaar Biriya</strong>, the largest planted forest in the Galil. The name means simply <em>deep</em> — from the gorge that splits the ridges around you." },
-      { t: "tradition", label: "Not in Tanach — and not the Amuka you may be thinking of", x: "There's no place called Amuka anywhere in Scripture. Naftali's nineteen fortified towns are listed in Yehoshua 19:32–39 and it isn't among them. Don't confuse it with <span class='hebrew'>בֵּית הָעֵמֶק</span> (Yehoshua 19:27), which is in <em>Asher's</em> portion in the western Galilee near Akko." },
+      { t: "tradition", label: "Not in Tanach — and not the Amuka you may be thinking of", x: "There's no place called Amuka anywhere in Tanach. Naftali's nineteen fortified towns are listed in Yehoshua 19:32–39 and it isn't among them. Don't confuse it with <span class='hebrew'>בֵּית הָעֵמֶק</span> (Yehoshua 19:27), which is in <em>Asher's</em> portion in the western Galilee near Akko." },
       { t: "p", x: "By geography rather than by name, you're inside the portion of <strong>Naftali</strong>. Moshe's blessing to that tribe reads <span class='hebrew'>נַפְתָּלִי שְׂבַע רָצוֹן וּמָלֵא בִּרְכַּת ה׳</span>, and Rashi explains it about this actual soil: <span class='hebrew'>שֶׁהָיְתָה אַרְצוֹ שְׂבֵעָה כָּל רְצוֹן יוֹשְׁבֶיהָ</span> — <em>his land was sated with everything its inhabitants desired</em>." },
       { t: "tradition", label: "Our drash, not Chazal's", x: "No classical source connects either blessing to Amuka or to the graves here. The verse and Rashi are real; the link to this valley is ours." }
     ]}
@@ -200,7 +270,7 @@ stops: [
   chips: ["1,204 m", "Open 24 hours", "Har Meron"],
   waze: waze("ציון רשבי מירון"), gmaps: gmaps("ציון רשבי מירון"),
   brief: [
-    "The highest ground you will stand on today — <strong>1,204 meters</strong>, the tallest peak in Israel inside the Green Line — and after the Kosel the most visited Jewish grave in the country.",
+    "The highest ground you will stand on today — <strong>1,204 meters</strong>, the tallest peak in Israel inside the Green Line — and after the Kotel the most visited Jewish grave in the country.",
     "Below you, by a tradition first recorded around <strong>1187</strong>, lie <strong>Rabbi Shimon bar Yochai</strong> and his son <strong>Rabbi Elazar</strong>, who hid from a Roman death sentence in a cave, buried to their necks in sand, living off one carob tree.",
     "Almost every famous fact about this mountain has a better true version underneath it. You get both here."
   ],
@@ -289,7 +359,7 @@ stops: [
       ] },
       { t: "tradition", label: "So who is actually buried here", x: "The earliest source placing Rabbi Shimon at Meron is Rabbi Yaakov ben Nesanel HaKohen, before 1187 — roughly a thousand years after his lifetime. Three other sources name three other places: the Bavli in <em>Bava Metzia</em> points to Biri, the midrash to Meron, and a traveler of about 1215 to Kfar Chananya. The 1971–77 excavation of ancient Meiron produced a village, seven strata, houses and workshops — and <strong>not one tomb identification</strong>. Nothing here is archaeologically established." },
       { t: "wow", label: "The Ari's own school says the third grave is someone else", x: [
-        "People will tell you the third marker in the chamber is <strong>Rabbi Yitzchak Nafcha</strong>. <em>Sha'ar HaGilgulim</em> places him in a split rock near Tzfat — and Shmuel Vital adds a gloss saying so outright: <em>“it is explicit here that he isn't buried with Rashbi and his son in Meron, as people say that the third marker there's Rabbi Yitzchak.”</em>",
+        "People will tell you the third marker in the chamber is <strong>Rabbi Yitzchak Nafcha</strong>. <em>Sha'ar HaGilgulim</em> places him somewhere else entirely — a split rock near Tzfat. And Shmuel Vital adds a note saying it outright: <em>“it is explicit here that he isn't buried with Rashbi and his son in Meron, as people say that the third marker there's Rabbi Yitzchak.”</em>",
         "And on Meron itself, Chaim Vital — who elsewhere in the same chapter is happy to write <em>“the people erred”</em> — will only go as far as: <span class='hebrew'>שָׁם קָבוּר הרשב״י… כְּמוֹ שֶׁאוֹמְרִים הָעוֹלָם</span>, <strong>“as people say.”</strong>"
       ] },
       { t: "p", x: "The Bavli's account of how Rabbi Elazar came to lie beside his father is worth carrying up the hill. His bier was brought on erev Yom Kippur, and a serpent lay with its tail in its mouth, encircling the cave and sealing it. They addressed it: <span class='hebrew'>עַכְנָא עַכְנָא! פִּתְחִי פִּיךְ וְיִכָּנֵס בֵּן אֵצֶל אָבִיו</span> — <em>serpent, serpent! Open your mouth, and let a son come in beside his father.</em>" }
@@ -370,7 +440,7 @@ stops: [
         "The Ramak <strong>disagreed with the practice</strong>. He argued that Shabbos doesn't arrive horizontally from the field but vertically, descending from above, and that it is best received in the synagogue.",
         "The man buried beside the Ari, whose circle produced the most famous Friday-night poem in Judaism, was the dissenter on the ritual that belongs to it."
       ] },
-      { t: "tradition", label: "The pillar of fire", x: "The story that the Ari saw a pillar of fire following the Ramak's bier, and was recognized as his successor, comes from the hagiographic literature — <em>Shivchei HaAri</em>, built from letters sent from Safed in 1607, a generation later, and <em>Toledot HaAri</em>, surviving only in manuscripts from the later 1600s. Those two sources don't even agree: one has a pillar of <em>fire</em>, the other a pillar of <em>cloud</em>. And the dramatic version in which the Ari arrives in Tzfat on the very day of the funeral contradicts the record, which has him settled here from 1569/70 and studying under the Ramak before his death." }
+      { t: "tradition", label: "The pillar of fire", x: "The story goes that the Ari saw a pillar of fire following the Ramak's bier, and was recognized as his successor. It does not come from an eyewitness. It comes from two later collections: <em>Shivchei HaAri</em>, built from letters sent out of Safed in 1607 — a generation after the fact — and <em>Toledot HaAri</em>, which survives only in manuscripts from the later 1600s. Those two sources don't even agree: one has a pillar of <em>fire</em>, the other a pillar of <em>cloud</em>. And the dramatic version in which the Ari arrives in Tzfat on the very day of the funeral contradicts the record, which has him settled here from 1569/70 and studying under the Ramak before his death." }
     ]},
     { h: "The year they tried to restart the Sanhedrin", b: [
       { t: "p", x: "This is the Tzfat story almost nobody tells, and it is the most audacious thing that happened on this hill." },
@@ -450,12 +520,12 @@ stops: [
   waze: waze("קבר הרמבם טבריה"), gmaps: gmaps("קבר הרמבם טבריה"),
   brief: [
     "You've dropped roughly 1,400 meters since lunch. This is the lowest city in Israel — and the only stop today that Tanach actually names.",
-    "Three graves, three centuries: <strong>Rabbi Akiva</strong>, who began learning at forty and died with the word <em>echad</em> on his lips; <strong>Rabbi Meir Baal HaNess</strong>, his student, whose name is on a tzedakah box in half the kitchens you know; and the <strong>Rambam</strong>, who died in Egypt in 1204 and was brought here.",
+    "Three graves, three different centuries. <strong>Rabbi Akiva</strong>, who began learning at forty and died with the word <em>echad</em> on his lips. <strong>Rabbi Meir Baal HaNess</strong>, his student — his name is on a tzedakah box in half the kitchens you know. And the <strong>Rambam</strong>, who died in Egypt in 1204 and was brought here.",
     "And the day has a closing rhyme you may not have noticed. You began at <strong>Amuka</strong> — <em>deep</em>. The Gemara lists the Sanhedrin's ten exiles and ends at this city with the words <span class='hebrew'>וּטְבֶרְיָא עֲמוּקָּה מִכּוּלָּן</span> — <strong>and Teveria is the deepest of them all.</strong>"
   ],
   sections: [
     { h: "The city Tanach names", b: [
-      { t: "p", x: "Amuka, Meron and Tzfat aren't named anywhere in Scripture. Teveria is — under an older name. Yehoshua 19:35 lists Naftali's fortified towns, and three of them land in a single verse: <span class='hebrew'>חַמַּת רַקַּת וְכִנָּרֶת</span>." },
+      { t: "p", x: "Amuka, Meron and Tzfat aren't named anywhere in Tanach. Teveria is — under an older name. Yehoshua 19:35 lists Naftali's fortified towns, and three of them land in a single verse: <span class='hebrew'>חַמַּת רַקַּת וְכִנָּרֶת</span>." },
       { t: "p", x: "<em>Megillah 6a</em> works out which is which. The young Rabbi Yochanan held that Chamas was Teveria — for the hot springs — and Rakkas was Tzippori. Rabba overturns it: <strong>Rakkas is Teveria.</strong> Rava is blunter still: <em>is there anyone who says Rakkas isn't Teveria?</em>" },
       { t: "wow", label: "Why it is called Rakkas", x: [
         "The Gemara gives the derasha, and it is one of the warmest lines in Shas about ordinary Jews:",
@@ -533,7 +603,7 @@ stops: [
       { t: "wow", label: "The vowels were made in this city", x: [
         "The <strong>Tiberian vocalization</strong> — the nikud and the te'amim in every Chumash on earth — was devised by the Masoretes of this city, from roughly the seventh and eighth centuries, with the <strong>ben Asher</strong> family as its culmination. It displaced the older Babylonian and Palestinian systems entirely.",
         "Around 920 a scribe here copied the consonantal text of what we call the <strong>Aleppo Codex</strong>, and Aharon ben Moshe ben Asher vocalized and annotated it.",
-        "Now read what the Rambam writes in <em>Hilchos Sefer Torah</em>: the scroll he relied on was the codex famous in Egypt, which had been in Jerusalem for years, <span class='hebrew'>לְפִי שֶׁהִגִּיהוֹ בֶּן אָשֵׁר</span> — <em>because ben Asher proofread it</em>, and refined it over many years — <span class='hebrew'>וְעָלָיו סָמַכְתִּי בְּסֵפֶר הַתּוֹרָה שֶׁכָּתַבְתִּי</span>, <em>and on it I relied for the Sefer Torah I wrote.</em>",
+        "Now read what the Rambam writes in <em>Hilchos Sefer Torah</em>. The scroll he trusted was a codex famous in Egypt, which had spent years in Jerusalem. Why that one? <span class='hebrew'>לְפִי שֶׁהִגִּיהוֹ בֶּן אָשֵׁר</span> — <em>because ben Asher proofread it</em>, and refined it over many years. And then: <span class='hebrew'>וְעָלָיו סָמַכְתִּי בְּסֵפֶר הַתּוֹרָה שֶׁכָּתַבְתִּי</span> — <em>on it I relied for the Sefer Torah I wrote.</em>",
         "So the Rambam is buried in the city of the man whose text he trusted above all others."
       ] },
       { t: "tradition", label: "Be precise about that chain", x: "The Rambam names <em>ben Asher</em> and a codex known in Egypt. He doesn't write “Teveria,” “Aleppo,” or “Keter.” Identifying his codex with the Aleppo Codex is a scholarly conclusion — Umberto Cassuto examined it in 1943, and Moshe Goshen-Gottstein confirmed it. It's now consensus, but it is a conclusion, not his words." }
@@ -561,7 +631,7 @@ stops: [
   ],
   more: [
     { s: "The Jerusalem Talmud, and the hot springs in the Mishnah", b: [
-      { t: "p", x: "With the Sanhedrin settled here from around 220 CE, Teveria became the center of Torah in Eretz Yisrael, and the <strong>Talmud Yerushalmi</strong> was redacted in this city — probably in the school of Rabbi Yochanan bar Nappacha, drawing also on Caesarea and Tzippori, in Galilean Aramaic." },
+      { t: "p", x: "The Sanhedrin settled here around 220 CE, and Teveria became the center of Torah in Eretz Yisrael. The <strong>Talmud Yerushalmi</strong> was put together in this city — probably in the school of Rabbi Yochanan bar Nappacha, drawing also on Caesarea and Tzippori, and written in Galilean Aramaic." },
       { t: "p", x: "Its end was administrative, not sudden: an edict in 415 stripped Gamliel VI of his rank; he died in 425 and the title of Nasi was outlawed; in 426 the patriarchal tax was diverted to the imperial treasury; in 429 the patriarchate was terminated." },
       { t: "p", x: "The hot springs are in the Mishnah. <em>Shabbos 3:4</em> records that the people of Teveria ran a pipe of cold water through a channel of the hot spring on Shabbos — and the chachamim forbade it. <em>Shabbos 40a</em> tracks the bathhouse decrees and ends with the sages giving way: <span class='hebrew'>רָאוּ שֶׁאֵין הַדָּבָר עוֹמֵד לָהֶן, הִתִּירוּ לָהֶן חַמֵּי טְבֶרְיָה</span> — they saw the decree wouldn't hold, and permitted the hot springs of Teveria." },
       { t: "p", x: "Teveria has counted among the Four Holy Cities since the eighteenth century — not from antiquity." }
